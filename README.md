@@ -1,8 +1,6 @@
-# Submission note
-
-Start with `../JUDGE_GUIDE.md` for clean setup. Existing local accounts and databases are intentionally not included. Historical development notes below describe the original machine.
-
 # InfraClaim AI — Phase 6 and internal pilot
+
+This public repository excludes private environment files, saved accounts, local databases, and generated passwords. Follow the setup instructions below to create a fresh local pilot.
 
 **Security update — 15 October 2026:** vendor aliases now enforce admin permissions; signup requests require administrator approval; invalid numeric/source data is rejected; request/resource limits and hosted cookie safeguards are enabled. Read [security controls and limits](docs/SECURITY.md) before sharing the demo. This remains a trusted, single-workspace synthetic pilot.
 
@@ -31,7 +29,7 @@ cd backend
 .venv\Scripts\python.exe -m scripts.create_pilot_users ..\pilot-accounts.txt
 ```
 
-Keep `pilot-accounts.txt` private and out of the release archive. It contains generated admin, operator, and reviewer passwords. Sign in through `/login`; permissions are enforced by the backend. This project's existing local accounts are recorded in `work/pilot-accounts.txt` and the live local site runs on port 3016.
+Keep `pilot-accounts.txt` private and out of Git. It contains generated admin, operator, and reviewer passwords. Sign in through `/login`; permissions are enforced by the backend.
 
 The dashboard includes the Phase 4 evidence graph, timeline, contract provenance, persistent exception queue, recorded policy checks, counter-investigation and reconciled recovery ledger. It restores saved cases and labels the inference mode and simulation clearly.
 
