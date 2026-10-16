@@ -1,0 +1,16 @@
+{$SITE_ADDRESS:80} {
+    basic_auth {
+        {$DEMO_USERNAME} {$DEMO_PASSWORD_HASH}
+    }
+    header {
+        X-Content-Type-Options nosniff
+        X-Frame-Options DENY
+        Referrer-Policy same-origin
+        Strict-Transport-Security "max-age=15552000"
+        -Server
+    }
+    request_body {
+        max_size 11MB
+    }
+    reverse_proxy frontend:3000
+}

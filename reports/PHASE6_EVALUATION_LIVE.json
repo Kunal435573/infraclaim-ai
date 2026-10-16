@@ -1,0 +1,19 @@
+{
+  "suite": "infraclaim_phase6_v1",
+  "mode": "live",
+  "status": "blocked",
+  "generated_at": "2026-10-09T11:44:54.867010+00:00",
+  "scenario_count": 0,
+  "requested_scenario_count": 50,
+  "real_model_successes": 0,
+  "metrics": null,
+  "model_metrics": null,
+  "publishable_live_model_metrics": false,
+  "preflight": {
+    "status": "blocked",
+    "reason": "Live mode and NEBIUS_API_KEY are required",
+    "inference_verified": false
+  },
+  "source_sha256": "238a37371a2d3ed2539a37fc371467536010a9c381ce1989ae224d627d87dc77",
+  "python_version": "3.11.9"
+}

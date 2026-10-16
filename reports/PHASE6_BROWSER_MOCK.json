@@ -1,0 +1,15 @@
+{
+  "url": "http://127.0.0.1:3016",
+  "mode": "mock",
+  "vendor_mode": "simulated",
+  "checks": [
+    "Hero button completed autonomous simulated claim, dispute, defense and reconciliation",
+    "Reload restored the persisted hero and $40,000 ledger",
+    "Ambiguous case appears in persistent exception queue; financial actions absent",
+    "Saved case selector preserved both cases",
+    "390px mobile layout has no horizontal overflow",
+    "Cross-origin action rejected with HTTP 403"
+  ],
+  "status": "passed",
+  "browser_errors": []
+}

@@ -1,0 +1,15 @@
+{
+  "started_at": "2026-10-09T11:44:59.224376+00:00",
+  "scope": "local containers only",
+  "mode": "mock",
+  "remote_deployed": false,
+  "checks": [
+    "Gateway rejects unauthenticated dashboard and API requests with 401",
+    "Authenticated dashboard, proxy, health and readiness respond successfully",
+    "Container worker completed simulated $40,000 recovery with matched memo",
+    "Container API holds ambiguous incident and rejects submission",
+    "Backend restart preserves cases and books recovery only once"
+  ],
+  "status": "passed",
+  "containers_stopped_after_check": true
+}

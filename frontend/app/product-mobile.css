@@ -1,0 +1,8 @@
+/* Keep intake and review forms inside narrow browser viewports. */
+.productPage,.productPage>*{min-width:0}
+.intakeGrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.fieldsTwo{grid-template-columns:repeat(2,minmax(0,1fr))}
+.productPanel,.reviewList,.reviewDetail,.field,.productPage .pageLead{min-width:0}
+.productPanel p,.reviewBlock p,.reviewBlock blockquote,.pageLead p{overflow-wrap:anywhere}
+@media(max-width:900px){.intakeGrid,.reviewLayout{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){.productPage header{height:auto;min-height:64px;flex-wrap:wrap;gap:6px}.productPage header .headerRight{flex-wrap:wrap}.fieldsTwo,.reviewStats,.evidenceList{grid-template-columns:minmax(0,1fr)}}

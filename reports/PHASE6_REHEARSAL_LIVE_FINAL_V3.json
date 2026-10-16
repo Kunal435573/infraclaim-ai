@@ -1,0 +1,32 @@
+{
+  "mode": "live",
+  "vendor_mode": "simulated",
+  "real_money_recovered": false,
+  "started_at": "2026-10-09T19:39:09.836287+00:00",
+  "steps": [
+    "Three-page PDF ingested; Section 7.4 on page 2",
+    "submitted",
+    "disputed"
+  ],
+  "status": "failed",
+  "investigation_inference": {
+    "requested_mode": "live",
+    "execution": "live",
+    "model": "nvidia/Nemotron-3_5-Lightning",
+    "status": "succeeded",
+    "attempts": 1,
+    "recorded_at": "2026-10-09T19:39:10.039298+00:00",
+    "prompt_sha256": "53fd95f9a98dac4e220b2fbaa0e301a3fbea1f1fd77fc2420d7a666264cf905b",
+    "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+    "http_status": 200,
+    "response_id": "chatcmpl-0b236ffb",
+    "response_model": "nvidia/Nemotron-3_5-Lightning",
+    "elapsed_ms": 19568.8,
+    "usage": {
+      "completion_tokens": 5221,
+      "prompt_tokens": 1567,
+      "total_tokens": 6788
+    }
+  },
+  "failure": "Expected defended, got human_review"
+}

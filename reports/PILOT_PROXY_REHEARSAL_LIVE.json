@@ -1,0 +1,50 @@
+{
+  "run_at": "2026-10-13T10:11:57.408123+00:00",
+  "kind": "local website proxy live-model synthetic pilot rehearsal",
+  "vendor_mode": "simulated",
+  "status": "completed",
+  "incident_id": "pilot_proxy_20261013_101157",
+  "health_status": 200,
+  "llm_mode": "live",
+  "contract_ingest_status": 200,
+  "contract_save_status": 200,
+  "manual_intake_status": 200,
+  "case_id": "case_81c4ea8849",
+  "inference": {
+    "execution": "live",
+    "status": "succeeded",
+    "model": "nvidia/Nemotron-3_5-Lightning"
+  },
+  "assessment": "supported",
+  "amount_usd": 40000.0,
+  "initial_state": "human_review",
+  "ticket_source_status": 200,
+  "telemetry_source_status": 200,
+  "maintenance_source_status": 200,
+  "source_documents": 3,
+  "review_status": 200,
+  "reviewed_by": "pilot-reviewer",
+  "after_review": "claim_ready",
+  "simulated_loop_start_status": 200,
+  "case_poll_status": 200,
+  "final_state": "verified",
+  "vendor_claim_id": "vendor_case_81c4ea8849",
+  "reconciliation": {
+    "memo": {
+      "id": "memo_vendor_case_81c4ea8849",
+      "claim_id": "vendor_case_81c4ea8849",
+      "case_id": "case_81c4ea8849",
+      "contract_id": "contract_pilot_proxy_20261013_101157",
+      "incident_id": "pilot_proxy_20261013_101157",
+      "vendor": "ThermaCore",
+      "customer": "NovaCompute",
+      "currency": "USD",
+      "amount_cents": 4000000,
+      "status": "posted",
+      "issued_at": "2026-10-13T10:12:36.270300+00:00"
+    },
+    "matched": true,
+    "mismatches": [],
+    "checked_at": "2026-10-13T10:12:36.280673+00:00"
+  }
+}

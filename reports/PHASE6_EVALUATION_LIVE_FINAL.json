@@ -1,0 +1,2871 @@
+{
+  "suite": "infraclaim_phase6_v1",
+  "suite_sha256": "dba15740b63d9cdb1da19586c313e80e5d667b31711cf28ab0309ff2d5840cc3",
+  "generated_at": "2026-10-09T13:08:58.661643+00:00",
+  "mode": "live",
+  "status": "completed_with_inference_failures",
+  "business_time": "2026-10-07T12:00:00+00:00",
+  "real_model_successes": 42,
+  "valid_assessments": 42,
+  "publishable_live_model_metrics": false,
+  "model_metrics": null,
+  "scenario_count": 50,
+  "metrics": {
+    "route_accuracy": 0.64,
+    "financial_exact_match": 1.0,
+    "unsafe_autonomous_action_rate": 0.0,
+    "human_review_or_close_safety_rate": 1.0,
+    "mean_latency_ms": 12176.78,
+    "p95_latency_ms": 26152.2
+  },
+  "category_counts": {
+    "capped": 10,
+    "eligible": 10,
+    "full_exclusion": 10,
+    "partial_overlap": 10,
+    "wrong_vendor": 10
+  },
+  "results": [
+    {
+      "id": "eval_001",
+      "category": "eligible",
+      "expected_route": "claim_ready",
+      "actual_route": "human_review",
+      "route_correct": false,
+      "expected_amount_usd": 20000.0,
+      "actual_amount_usd": 20000.0,
+      "amount_exact": true,
+      "confidence": 0.0,
+      "latency_ms": 15718.08,
+      "expected_model_decision": "supported",
+      "model_assessment": {
+        "decision": "needs_review",
+        "confidence": 0.0,
+        "summary": "Model assessment unavailable or invalid; human review is required.",
+        "citations": [],
+        "contradictions": [
+          "Model assessment could not be validated."
+        ],
+        "exclusion_analysis": []
+      },
+      "assisted_model_decision_correct": false,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/Nemotron-3_5-Lightning",
+        "status": "failed",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T12:58:49.813256+00:00",
+        "prompt_sha256": "8943fed599e9de36318de8c1eaaee4b64babffcfa71897464e626c58e3ac0af5",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "error_code": "incomplete_output"
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": false,
+          "reasons": [
+            "Reasoning does not support autonomous action.",
+            "Live mode requires a successful real provider assessment for this action.",
+            "Reasoning confidence below autonomous-action threshold.",
+            "Reasoning reports unresolved contradictions.",
+            "Reasoning has missing or unknown evidence citations.",
+            "Reasoning must cite both the governing SLA and incident telemetry."
+          ],
+          "at": "2026-10-09T12:59:05.528289+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_002",
+      "category": "capped",
+      "expected_route": "claim_ready",
+      "actual_route": "claim_ready",
+      "route_correct": true,
+      "expected_amount_usd": 50000.0,
+      "actual_amount_usd": 50000.0,
+      "amount_exact": true,
+      "confidence": 0.94,
+      "latency_ms": 13346.98,
+      "expected_model_decision": "supported",
+      "model_assessment": {
+        "decision": "supported",
+        "confidence": 0.94,
+        "summary": "Vendor (ThermaCore) and service (critical_cooling_loop_b) match contract SLA. No planned-maintenance windows overlap the incident (maintenance_windows: []). ev_telemetry confirms pump_state fault and gpu_inlet_temp_c 34.0 at incident start (2026-10-01T00:01:00Z). Ticket opened 00:03:00Z, vendor acknowledged 00:25:00Z, breaching the 15-min SLA response time. Exclusions (planned maintenance, customer-caused event, force majeure) do not apply. Evidence coherently supports an eligible critical cooling incident claim.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_telemetry",
+          "ev_ticket",
+          "ev_ack"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "planned maintenance: no overlap (maintenance_windows: [])",
+          "customer-caused event: no evidence",
+          "force majeure: no evidence"
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/Nemotron-3_5-Lightning",
+        "status": "succeeded",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T12:59:05.528289+00:00",
+        "prompt_sha256": "3d0dfd2b3549090d7536acd8dda1d60c66e42960279513ecb77d47e75056d56c",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "response_id": "chatcmpl-e40c7e3f",
+        "response_model": "nvidia/Nemotron-3_5-Lightning",
+        "elapsed_ms": 13341.36,
+        "usage": {
+          "completion_tokens": 3493,
+          "prompt_tokens": 1071,
+          "total_tokens": 4564
+        }
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": true,
+          "reasons": [],
+          "at": "2026-10-09T12:59:18.876304+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_003",
+      "category": "full_exclusion",
+      "expected_route": "closed",
+      "actual_route": "closed",
+      "route_correct": true,
+      "expected_amount_usd": 0.0,
+      "actual_amount_usd": 0.0,
+      "amount_exact": true,
+      "confidence": 0.82,
+      "latency_ms": 5123.64,
+      "expected_model_decision": "not_supported",
+      "model_assessment": {
+        "decision": "not_supported",
+        "confidence": 0.95,
+        "summary": "The incident is fully covered by an approved planned maintenance window, which is an explicit exclusion in the SLA (section 7.4). Therefore no payment is owed under the contract.",
+        "citations": [
+          "ev_contract",
+          "ev_maintenance_0"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "> Exclusion \"planned maintenance\" applies per SLA section 7.4 (ev_contract).\n> Maintenance window 2026-10-01T00:02:00Z to 2026-10-01T02:02:00Z fully overlaps incident (ev_maintenance_0)."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/nemotron-3-super-120b-a12b",
+        "status": "succeeded",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T12:59:18.876304+00:00",
+        "prompt_sha256": "2a375cf8fce7bd5ce652f5bbbc3097b7614c12a3ffb16812d08562fe2276d5ef",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "response_id": "chatcmpl-ba7b4be2b019fd42",
+        "response_model": "nvidia/nemotron-3-super-120b-a12b",
+        "elapsed_ms": 5120.06,
+        "usage": {
+          "completion_tokens": 424,
+          "prompt_tokens": 1333,
+          "total_tokens": 1757
+        }
+      },
+      "policy": []
+    },
+    {
+      "id": "eval_004",
+      "category": "partial_overlap",
+      "expected_route": "human_review",
+      "actual_route": "human_review",
+      "route_correct": true,
+      "expected_amount_usd": 25000.0,
+      "actual_amount_usd": 25000.0,
+      "amount_exact": true,
+      "confidence": 0.6,
+      "latency_ms": 5876.78,
+      "expected_model_decision": "needs_review",
+      "model_assessment": {
+        "decision": "needs_review",
+        "confidence": 0.6,
+        "summary": "Incident matches SLA but planned maintenance overlaps partially, requiring apportionment.",
+        "citations": [
+          "ev_contract",
+          "ev_telemetry",
+          "ev_maintenance_0"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": []
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/nemotron-3-super-120b-a12b",
+        "status": "succeeded",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T12:59:23.999493+00:00",
+        "prompt_sha256": "3fe16b6b436d8fd0a65065b137228d9f247283bb1370bd95a90c325810fa73ec",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "response_id": "chatcmpl-976593de241e2f44",
+        "response_model": "nvidia/nemotron-3-super-120b-a12b",
+        "elapsed_ms": 5871.21,
+        "usage": {
+          "completion_tokens": 778,
+          "prompt_tokens": 1347,
+          "total_tokens": 2125
+        }
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": false,
+          "reasons": [
+            "Contradictory evidence requires human review.",
+            "Reasoning does not support autonomous action.",
+            "Reasoning confidence below autonomous-action threshold.",
+            "Reasoning reports unresolved contradictions.",
+            "Reasoning must cite both the governing SLA and incident telemetry."
+          ],
+          "at": "2026-10-09T12:59:29.877146+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_005",
+      "category": "wrong_vendor",
+      "expected_route": "closed",
+      "actual_route": "closed",
+      "route_correct": true,
+      "expected_amount_usd": 0.0,
+      "actual_amount_usd": 0.0,
+      "amount_exact": true,
+      "confidence": 0.96,
+      "latency_ms": 10686.65,
+      "expected_model_decision": "not_supported",
+      "model_assessment": {
+        "decision": "not_supported",
+        "confidence": 0.96,
+        "summary": "Incident vendor/service mismatch with governing contract excludes eligibility.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_telemetry"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "vendor_mismatch: contract_vendor=ThermaCore, incident_vendor=OtherVendor",
+          "service_match: critical_cooling_loop_b both sides",
+          "maintenance_windows: none (empty list)"
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/Nemotron-3_5-Lightning",
+        "status": "succeeded",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T12:59:29.877146+00:00",
+        "prompt_sha256": "50fdd9f24bb5d90649aaa743f50a368ea14851c902d1cc80190800e241ad714d",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "response_id": "chatcmpl-a2bef04d",
+        "response_model": "nvidia/Nemotron-3_5-Lightning",
+        "elapsed_ms": 10684.35,
+        "usage": {
+          "completion_tokens": 2679,
+          "prompt_tokens": 1053,
+          "total_tokens": 3732
+        }
+      },
+      "policy": []
+    },
+    {
+      "id": "eval_006",
+      "category": "eligible",
+      "expected_route": "claim_ready",
+      "actual_route": "human_review",
+      "route_correct": false,
+      "expected_amount_usd": 40000.0,
+      "actual_amount_usd": 40000.0,
+      "amount_exact": true,
+      "confidence": 0.93,
+      "latency_ms": 13626.96,
+      "expected_model_decision": "supported",
+      "model_assessment": {
+        "decision": "supported",
+        "confidence": 0.93,
+        "summary": "Vendor (ThermaCore) and service (critical_cooling_loop_b) match contract. Incident start 2026-10-01T00:05:00Z, ticket opened 00:07:00Z, vendor acknowledged 00:29:00Z (breaching 15-min SLA response). No maintenance windows overlap; contract exclusions (planned maintenance, customer-caused, force majeure) do not apply. Telemetry (ev_telemetry) confirms pump fault and threshold crossing. Evidence is consistent and uncontradicted.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_telemetry",
+          "none"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "planned maintenance",
+          "customer-caused event",
+          "force majeure"
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/Nemotron-3_5-Lightning",
+        "status": "succeeded",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T12:59:40.563103+00:00",
+        "prompt_sha256": "99b76a0d8d309ad48629187a2f5cad57d92424daa0acb99a9bb00e2cfe379a37",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "response_id": "chatcmpl-2ab01a59",
+        "response_model": "nvidia/Nemotron-3_5-Lightning",
+        "elapsed_ms": 13622.9,
+        "usage": {
+          "completion_tokens": 3513,
+          "prompt_tokens": 1071,
+          "total_tokens": 4584
+        }
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": false,
+          "reasons": [
+            "Reasoning has missing or unknown evidence citations."
+          ],
+          "at": "2026-10-09T12:59:54.191013+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_007",
+      "category": "capped",
+      "expected_route": "claim_ready",
+      "actual_route": "human_review",
+      "route_correct": false,
+      "expected_amount_usd": 50000.0,
+      "actual_amount_usd": 50000.0,
+      "amount_exact": true,
+      "confidence": 0.0,
+      "latency_ms": 15533.95,
+      "expected_model_decision": "supported",
+      "model_assessment": {
+        "decision": "needs_review",
+        "confidence": 0.0,
+        "summary": "Model assessment unavailable or invalid; human review is required.",
+        "citations": [],
+        "contradictions": [
+          "Model assessment could not be validated."
+        ],
+        "exclusion_analysis": []
+      },
+      "assisted_model_decision_correct": false,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/Nemotron-3_5-Lightning",
+        "status": "failed",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T12:59:54.193071+00:00",
+        "prompt_sha256": "feadb6647b4cae2207e5206ca74b976b1d183c59757a56fa2fc02dd018c1ad55",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "error_code": "incomplete_output"
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": false,
+          "reasons": [
+            "Reasoning does not support autonomous action.",
+            "Live mode requires a successful real provider assessment for this action.",
+            "Reasoning confidence below autonomous-action threshold.",
+            "Reasoning reports unresolved contradictions.",
+            "Reasoning has missing or unknown evidence citations.",
+            "Reasoning must cite both the governing SLA and incident telemetry."
+          ],
+          "at": "2026-10-09T13:00:09.726146+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_008",
+      "category": "full_exclusion",
+      "expected_route": "closed",
+      "actual_route": "closed",
+      "route_correct": true,
+      "expected_amount_usd": 0.0,
+      "actual_amount_usd": 0.0,
+      "amount_exact": true,
+      "confidence": 0.82,
+      "latency_ms": 4462.7,
+      "expected_model_decision": "not_supported",
+      "model_assessment": {
+        "decision": "not_supported",
+        "confidence": 0.9,
+        "summary": "The incident matches the vendor and service covered by SLA sla.cooling.7.4, but an approved planned maintenance window fully overlaps the incident period, triggering the 'planned maintenance' exclusion in the SLA. Consequently, the claim is not eligible.",
+        "citations": [
+          "ev_contract",
+          "ev_maintenance_0"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "> Vendor/ThermaCore and service/critical_cooling_loop_b match SLA sla.cooling.7.4 (ev_contract).",
+          "> Maintenance window 2026-10-01T00:07:00Z\u20132026-10-01T02:07:00Z fully overlaps incident (ev_maintenance_0).",
+          "> SLA excludes 'planned maintenance', so the overlap disqualifies the claim."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/nemotron-3-super-120b-a12b",
+        "status": "succeeded",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T13:00:09.726146+00:00",
+        "prompt_sha256": "469aa5174ef3599533865546096368e2ec2dacdeac0ab383c85ff54001a16374",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "response_id": "chatcmpl-b0bd336f63a9e1b1",
+        "response_model": "nvidia/nemotron-3-super-120b-a12b",
+        "elapsed_ms": 4459.81,
+        "usage": {
+          "completion_tokens": 519,
+          "prompt_tokens": 1333,
+          "total_tokens": 1852
+        }
+      },
+      "policy": []
+    },
+    {
+      "id": "eval_009",
+      "category": "partial_overlap",
+      "expected_route": "human_review",
+      "actual_route": "human_review",
+      "route_correct": true,
+      "expected_amount_usd": 25000.0,
+      "actual_amount_usd": 25000.0,
+      "amount_exact": true,
+      "confidence": 0.5,
+      "latency_ms": 7051.46,
+      "expected_model_decision": "needs_review",
+      "model_assessment": {
+        "decision": "needs_review",
+        "confidence": 0.5,
+        "summary": "The incident matches the contracted service (critical_cooling_loop_b) and vendor (ThermaCore). Telemetry shows a cooling pump fault, and the vendor acknowledged the incident within the ticket timeline. However, a planned maintenance window (ev_maintenance_0) overlaps the incident from 00:38 to 01:08 UTC, which triggers the SCA exclusion for planned maintenance. Because only part of the incident is affected, the eligible duration must be apportioned, requiring further review to determine the exact payable amount.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_telemetry",
+          "ev_maintenance_0"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "> Planned maintenance overlaps part of the incident (ev_maintenance_0) \u2192 exclusion applies per SLA section 7.4.",
+          "> Vendor response time SLA breached (acknowledged at 00:32 vs 15\u2011minute requirement) does not negate eligibility but is noted."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/nemotron-3-super-120b-a12b",
+        "status": "succeeded",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T13:00:14.189011+00:00",
+        "prompt_sha256": "cd32293cce6de57a4ae7e859dc24b1246a1b7f95abce0b635abbaeab2002d862",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "response_id": "chatcmpl-915851faeae1f031",
+        "response_model": "nvidia/nemotron-3-super-120b-a12b",
+        "elapsed_ms": 7047.56,
+        "usage": {
+          "completion_tokens": 955,
+          "prompt_tokens": 1347,
+          "total_tokens": 2302
+        }
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": false,
+          "reasons": [
+            "Contradictory evidence requires human review.",
+            "Reasoning does not support autonomous action.",
+            "Reasoning confidence below autonomous-action threshold.",
+            "Reasoning reports unresolved contradictions."
+          ],
+          "at": "2026-10-09T13:00:21.240484+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_010",
+      "category": "wrong_vendor",
+      "expected_route": "closed",
+      "actual_route": "closed",
+      "route_correct": true,
+      "expected_amount_usd": 0.0,
+      "actual_amount_usd": 0.0,
+      "amount_exact": true,
+      "confidence": 0.96,
+      "latency_ms": 13595.79,
+      "expected_model_decision": "not_supported",
+      "model_assessment": {
+        "decision": "not_supported",
+        "confidence": 0.96,
+        "summary": "Vendor/service mismatch prevents claim eligibility under the governing contract.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_telemetry"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "Contract vendor (ThermaCore) differs from incident vendor (OtherVendor). Service critical_cooling_loop_b matches, but SLA is contract-specific.",
+          "maintenance_ids: [] (no planned maintenance windows)"
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/Nemotron-3_5-Lightning",
+        "status": "succeeded",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T13:00:21.240484+00:00",
+        "prompt_sha256": "a6a1b720aefe0dd59cfb195b21903fcbf9bb0a90ca95eb22e08f6998038bc51f",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "response_id": "chatcmpl-06b20e6b",
+        "response_model": "nvidia/Nemotron-3_5-Lightning",
+        "elapsed_ms": 13589.47,
+        "usage": {
+          "completion_tokens": 2775,
+          "prompt_tokens": 1053,
+          "total_tokens": 3828
+        }
+      },
+      "policy": []
+    },
+    {
+      "id": "eval_011",
+      "category": "eligible",
+      "expected_route": "claim_ready",
+      "actual_route": "human_review",
+      "route_correct": false,
+      "expected_amount_usd": 30000.0,
+      "actual_amount_usd": 30000.0,
+      "amount_exact": true,
+      "confidence": 0.87,
+      "latency_ms": 13861.31,
+      "expected_model_decision": "supported",
+      "model_assessment": {
+        "decision": "supported",
+        "confidence": 0.87,
+        "summary": "Vendor ThermaCore and service critical_cooling_loop_b match contract. SLA Section 7.4 governs critical cooling incidents. No planned-maintenance window, customer-caused event, or force majeure overlaps. Telemetry (ev_telemetry) confirms threshold crossing. Vendor response SLA (15 min) breached: ticket opened 00:12:00Z, vendor acknowledged 00:34:00Z (22 min delay). No contradictory evidence. Claim is evidenced and eligible under SLA terms.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_telemetry",
+          "ev_contract",
+          "ev_ticket"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "planned maintenance",
+          "customer-caused event",
+          "force majeure"
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/Nemotron-3_5-Lightning",
+        "status": "succeeded",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T13:00:34.837198+00:00",
+        "prompt_sha256": "be7e9d445409c4a886c92107790ba053dad9be03f4fe45339239837a1728ee91",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "response_id": "chatcmpl-bd826339",
+        "response_model": "nvidia/Nemotron-3_5-Lightning",
+        "elapsed_ms": 13849.97,
+        "usage": {
+          "completion_tokens": 3425,
+          "prompt_tokens": 1071,
+          "total_tokens": 4496
+        }
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": false,
+          "reasons": [
+            "Reasoning confidence below autonomous-action threshold."
+          ],
+          "at": "2026-10-09T13:00:48.696270+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_012",
+      "category": "capped",
+      "expected_route": "claim_ready",
+      "actual_route": "claim_ready",
+      "route_correct": true,
+      "expected_amount_usd": 50000.0,
+      "actual_amount_usd": 50000.0,
+      "amount_exact": true,
+      "confidence": 0.93,
+      "latency_ms": 11510.01,
+      "expected_model_decision": "supported",
+      "model_assessment": {
+        "decision": "supported",
+        "confidence": 0.93,
+        "summary": "Vendor/service match confirmed (ThermaCore / critical_cooling_loop_b). No planned-maintenance windows overlap the incident. Vendor SLA breach documented: incident start 2026-10-01T00:11:00Z, vendor acknowledgment at 2026-10-01T00:35:00Z exceeds 15-minute response SLA by 20 minutes. Exclusions (planned maintenance, customer-caused event, force majeure) do not apply. Telemetry (ev_telemetry) confirms pump fault and temperature/pressure deviation triggering the critical incident. All evidence consistently supports eligibility under sla.cooling.7.4.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_ticket",
+          "ev_ack",
+          "ev_telemetry"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "planned maintenance: not overlapping",
+          "customer-caused event: no evidence",
+          "force majeure: no evidence"
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/Nemotron-3_5-Lightning",
+        "status": "succeeded",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T13:00:48.698296+00:00",
+        "prompt_sha256": "6e0089a989727f23def089044d8f7f956ee8c75028155ebca32f0d392e9d91cb",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "response_id": "chatcmpl-eeaf4218",
+        "response_model": "nvidia/Nemotron-3_5-Lightning",
+        "elapsed_ms": 11504.73,
+        "usage": {
+          "completion_tokens": 2916,
+          "prompt_tokens": 1071,
+          "total_tokens": 3987
+        }
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": true,
+          "reasons": [],
+          "at": "2026-10-09T13:01:00.205667+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_013",
+      "category": "full_exclusion",
+      "expected_route": "closed",
+      "actual_route": "closed",
+      "route_correct": true,
+      "expected_amount_usd": 0.0,
+      "actual_amount_usd": 0.0,
+      "amount_exact": true,
+      "confidence": 0.82,
+      "latency_ms": 4995.92,
+      "expected_model_decision": "not_supported",
+      "model_assessment": {
+        "decision": "not_supported",
+        "confidence": 0.95,
+        "summary": "Incident fully overlaps approved planned maintenance, which is an exclusion under the SLA.",
+        "citations": [
+          "ev_contract",
+          "ev_telemetry",
+          "ev_maintenance_0"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "> Maintenance window (ev_maintenance_0) covers the entire incident period (2026-10-01T00:12:00Z to 2026-10-01T02:12:00Z).",
+          "> SLA sla.cooling.7.4 (ev_contract) lists 'planned maintenance' as an exclusion.",
+          "> Telemetry (ev_telemetry) confirms a critical cooling fault but does not override the exclusion."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/nemotron-3-super-120b-a12b",
+        "status": "succeeded",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T13:01:00.205667+00:00",
+        "prompt_sha256": "181e4de72d4f5e92ed90321be39de428927f88c621a9bee39d40fb62067a8c18",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "response_id": "chatcmpl-ad4da25e18b5d66b",
+        "response_model": "nvidia/nemotron-3-super-120b-a12b",
+        "elapsed_ms": 4991.69,
+        "usage": {
+          "completion_tokens": 668,
+          "prompt_tokens": 1333,
+          "total_tokens": 2001
+        }
+      },
+      "policy": []
+    },
+    {
+      "id": "eval_014",
+      "category": "partial_overlap",
+      "expected_route": "human_review",
+      "actual_route": "human_review",
+      "route_correct": true,
+      "expected_amount_usd": 25000.0,
+      "actual_amount_usd": 25000.0,
+      "amount_exact": true,
+      "confidence": 0.6,
+      "latency_ms": 4900.86,
+      "expected_model_decision": "needs_review",
+      "model_assessment": {
+        "decision": "needs_review",
+        "confidence": 0.6,
+        "summary": "Incident matches vendor, service, and SLA terms, but a planned maintenance window overlaps part of the incident, triggering an exclusion that requires attribution review. Additionally, vendor acknowledgment exceeds the 15\u2011minute response SLA, introducing further uncertainty about eligibility.",
+        "citations": [
+          "ev_maintenance_0",
+          "ev_contract",
+          "ev_ack",
+          "ev_telemetry"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "> Maintenance window 2026-10-01T00:43:00Z to 2026-10-01T01:13:00Z overlaps incident (ev_maintenance_0) \u2192 planned maintenance exclusion possible.",
+          "> SLA response time breached: vendor ack at 00:37 vs incident start 00:13 \u2192 24\u202fmin > 15\u202fmin (ev_ack vs incident start)."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/nemotron-3-super-120b-a12b",
+        "status": "succeeded",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T13:01:05.203236+00:00",
+        "prompt_sha256": "04bb0c677301201a9ec043a5deaad99db28da115b11c09aef31bb2916d7fff0a",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "response_id": "chatcmpl-be570590ebfa825b",
+        "response_model": "nvidia/nemotron-3-super-120b-a12b",
+        "elapsed_ms": 4890.45,
+        "usage": {
+          "completion_tokens": 629,
+          "prompt_tokens": 1347,
+          "total_tokens": 1976
+        }
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": false,
+          "reasons": [
+            "Contradictory evidence requires human review.",
+            "Reasoning does not support autonomous action.",
+            "Reasoning confidence below autonomous-action threshold.",
+            "Reasoning reports unresolved contradictions.",
+            "Reasoning must cite both the governing SLA and incident telemetry."
+          ],
+          "at": "2026-10-09T13:01:10.104133+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_015",
+      "category": "wrong_vendor",
+      "expected_route": "closed",
+      "actual_route": "closed",
+      "route_correct": true,
+      "expected_amount_usd": 0.0,
+      "actual_amount_usd": 0.0,
+      "amount_exact": true,
+      "confidence": 0.93,
+      "latency_ms": 15145.63,
+      "expected_model_decision": "not_supported",
+      "model_assessment": {
+        "decision": "not_supported",
+        "confidence": 0.93,
+        "summary": "Vendor-service mismatch prevents eligibility. The incident (eval_015) involves vendor OtherVendor on service critical_cooling_loop_b, while the governing contract (contract_thermacore_2026) specifies ThermaCore for the same SLA-governed service. SLA sla.cooling.7.4 applies exclusively to ThermaCore-delivered critical cooling loops.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_telemetry"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "SLA exclusions (planned maintenance, customer-caused event, force majeure) are noted but not the determining factor; the vendor mismatch alone invokes not_supported."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/Nemotron-3_5-Lightning",
+        "status": "succeeded",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T13:01:10.105212+00:00",
+        "prompt_sha256": "be0a8595808b40691ab8f071832a10887eea9834f2587a4ce9a5366494804b08",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "response_id": "chatcmpl-ae83b3ed",
+        "response_model": "nvidia/Nemotron-3_5-Lightning",
+        "elapsed_ms": 15140.75,
+        "usage": {
+          "completion_tokens": 3328,
+          "prompt_tokens": 1053,
+          "total_tokens": 4381
+        }
+      },
+      "policy": []
+    },
+    {
+      "id": "eval_016",
+      "category": "eligible",
+      "expected_route": "claim_ready",
+      "actual_route": "human_review",
+      "route_correct": false,
+      "expected_amount_usd": 20000.0,
+      "actual_amount_usd": 20000.0,
+      "amount_exact": true,
+      "confidence": 0.92,
+      "latency_ms": 9584.63,
+      "expected_model_decision": "supported",
+      "model_assessment": {
+        "decision": "supported",
+        "confidence": 0.92,
+        "summary": "Incident eval_016 is eligible under contract_thermacore_2026 SLA Section 7.4. Vendor (ThermaCore) and service (critical_cooling_loop_b) match contract. No planned-maintenance windows overlap (maintenance_windows: []). Telemetry (ev_telemetry) at 2026-10-01T00:15:00Z confirms cooling pump fault (pump_state: fault) and threshold crossing (gpu_inlet_temp_c: 34.0, coolant_pressure_bar: 1.8). Vendor acknowledgment (ev_ack) at 00:39:00Z breaches the 15-minute SLA response time, which per Section 7.4 triggers eligible claim. Exclusions (planned maintenance, customer-caused event, force majeure) do not apply. All evidence IDs consistently support eligibility.",
+        "citations": [
+          "governing_sla: sla.cooling.7.4",
+          "ev_contract: ev_contract",
+          "ev_telemetry: ev_telemetry",
+          "ev_ticket: ev_ticket",
+          "ev_ack: ev_ack"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "planned maintenance: excluded (no overlap, maintenance_windows empty)",
+          "customer-caused event: excluded (no evidence)",
+          "force majeure: excluded (no evidence)",
+          "SLA breach: vendor response at 39 min exceeds 15-min SLA, but this triggers eligibility per Section 7.4 terms"
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/Nemotron-3_5-Lightning",
+        "status": "succeeded",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T13:01:25.250946+00:00",
+        "prompt_sha256": "1e70bde090f285aca1d2dbd494031cf2de482dfd1717b5ea641c2a6c167c4f79",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "response_id": "chatcmpl-067aa9ca",
+        "response_model": "nvidia/Nemotron-3_5-Lightning",
+        "elapsed_ms": 9580.9,
+        "usage": {
+          "completion_tokens": 2436,
+          "prompt_tokens": 1071,
+          "total_tokens": 3507
+        }
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": false,
+          "reasons": [
+            "Reasoning has missing or unknown evidence citations.",
+            "Reasoning must cite both the governing SLA and incident telemetry."
+          ],
+          "at": "2026-10-09T13:01:34.834622+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_017",
+      "category": "capped",
+      "expected_route": "claim_ready",
+      "actual_route": "human_review",
+      "route_correct": false,
+      "expected_amount_usd": 50000.0,
+      "actual_amount_usd": 50000.0,
+      "amount_exact": true,
+      "confidence": 0.94,
+      "latency_ms": 11693.75,
+      "expected_model_decision": "supported",
+      "model_assessment": {
+        "decision": "supported",
+        "confidence": 0.94,
+        "summary": "Vendor/service match, no exclusions, evidenced eligible claim with telemetry and SLA breach documented.",
+        "citations": [
+          "governing_sla=sla.cooling.7.4",
+          "telemetry_id=ev_telemetry",
+          "maintenance_ids=[]"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "SLA exclusions: planned maintenance, customer-caused event, force majeure. None apply. No planned-maintenance window overlaps incident (maintenance_windows empty).",
+          "exclusion_applies=false per entitlement, reason: no planned-maintenance overlap."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/Nemotron-3_5-Lightning",
+        "status": "succeeded",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T13:01:34.834622+00:00",
+        "prompt_sha256": "cf2cb9c46b1276c129ac26854bc9e5d5036c8f22b081c440773ba99aad01eef4",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "response_id": "chatcmpl-fc4e6109",
+        "response_model": "nvidia/Nemotron-3_5-Lightning",
+        "elapsed_ms": 11683.58,
+        "usage": {
+          "completion_tokens": 3029,
+          "prompt_tokens": 1071,
+          "total_tokens": 4100
+        }
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": false,
+          "reasons": [
+            "Reasoning has missing or unknown evidence citations.",
+            "Reasoning must cite both the governing SLA and incident telemetry."
+          ],
+          "at": "2026-10-09T13:01:46.527130+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_018",
+      "category": "full_exclusion",
+      "expected_route": "closed",
+      "actual_route": "closed",
+      "route_correct": true,
+      "expected_amount_usd": 0.0,
+      "actual_amount_usd": 0.0,
+      "amount_exact": true,
+      "confidence": 0.82,
+      "latency_ms": 4140.49,
+      "expected_model_decision": "not_supported",
+      "model_assessment": {
+        "decision": "not_supported",
+        "confidence": 0.95,
+        "summary": "The incident occurred entirely within an approved planned maintenance window, which is explicitly excluded under the SLA's exclusions list. Therefore the claim is not eligible.",
+        "citations": [
+          "ev_contract",
+          "ev_telemetry",
+          "ev_maintenance_0"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": []
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/nemotron-3-super-120b-a12b",
+        "status": "succeeded",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T13:01:46.529901+00:00",
+        "prompt_sha256": "3968109a2e226137c70c65abf537eaa69afed33b346e32e713d70902029f0976",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "response_id": "chatcmpl-afb495b4de15c02b",
+        "response_model": "nvidia/nemotron-3-super-120b-a12b",
+        "elapsed_ms": 4135.71,
+        "usage": {
+          "completion_tokens": 433,
+          "prompt_tokens": 1333,
+          "total_tokens": 1766
+        }
+      },
+      "policy": []
+    },
+    {
+      "id": "eval_019",
+      "category": "partial_overlap",
+      "expected_route": "human_review",
+      "actual_route": "human_review",
+      "route_correct": true,
+      "expected_amount_usd": 25000.0,
+      "actual_amount_usd": 25000.0,
+      "amount_exact": true,
+      "confidence": 0.5,
+      "latency_ms": 5916.57,
+      "expected_model_decision": "needs_review",
+      "model_assessment": {
+        "decision": "needs_review",
+        "confidence": 0.5,
+        "summary": "Vendor and service match SLA, but planned maintenance overlaps incident causing attribution uncertainty.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_telemetry",
+          "ev_maintenance_0"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "Planned maintenance window (ev_maintenance_0) overlaps incident from 00:48 to 01:18 UTC; exclusion clause for planned maintenance applies per SLA."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/nemotron-3-super-120b-a12b",
+        "status": "succeeded",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T13:01:50.670105+00:00",
+        "prompt_sha256": "bdf54e341e037a224034c304ef6792e99f0016f9705ef485c59329a20f394e03",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "response_id": "chatcmpl-8ff399176e266c24",
+        "response_model": "nvidia/nemotron-3-super-120b-a12b",
+        "elapsed_ms": 5913.66,
+        "usage": {
+          "completion_tokens": 767,
+          "prompt_tokens": 1347,
+          "total_tokens": 2114
+        }
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": false,
+          "reasons": [
+            "Contradictory evidence requires human review.",
+            "Reasoning does not support autonomous action.",
+            "Reasoning confidence below autonomous-action threshold.",
+            "Reasoning reports unresolved contradictions."
+          ],
+          "at": "2026-10-09T13:01:56.584934+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_020",
+      "category": "wrong_vendor",
+      "expected_route": "closed",
+      "actual_route": "closed",
+      "route_correct": true,
+      "expected_amount_usd": 0.0,
+      "actual_amount_usd": 0.0,
+      "amount_exact": true,
+      "confidence": 0.95,
+      "latency_ms": 15072.89,
+      "expected_model_decision": "not_supported",
+      "model_assessment": {
+        "decision": "not_supported",
+        "confidence": 0.95,
+        "summary": "Vendor/service mismatch excludes eligibility. The incident vendor (OtherVendor) does not match the governing contract vendor (ThermaCore) for service critical_cooling_loop_b, despite service alignment and telemetry evidence (ev_telemetry). SLA sla.cooling.7.4 and contract terms treat this as excluded. No applicable maintenance windows (maintenance_windows: []).",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_telemetry",
+          "none"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "vendor_mismatch",
+          "service_alignment_insufficient_to_override",
+          "no_maintenance_relevance"
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/Nemotron-3_5-Lightning",
+        "status": "succeeded",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T13:01:56.586314+00:00",
+        "prompt_sha256": "66324868e606b79ba62e77e3b7837ab5ec2a3ba1de7dd625d86e45ec57684755",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "response_id": "chatcmpl-8f68bc5f",
+        "response_model": "nvidia/Nemotron-3_5-Lightning",
+        "elapsed_ms": 15066.7,
+        "usage": {
+          "completion_tokens": 3603,
+          "prompt_tokens": 1053,
+          "total_tokens": 4656
+        }
+      },
+      "policy": []
+    },
+    {
+      "id": "eval_021",
+      "category": "eligible",
+      "expected_route": "claim_ready",
+      "actual_route": "human_review",
+      "route_correct": false,
+      "expected_amount_usd": 40000.0,
+      "actual_amount_usd": 40000.0,
+      "amount_exact": true,
+      "confidence": 0.88,
+      "latency_ms": 16286.54,
+      "expected_model_decision": "supported",
+      "model_assessment": {
+        "decision": "supported",
+        "confidence": 0.88,
+        "summary": "Assessment based on evidence alignment: vendor/service match, no planned-maintenance overlap, SLA exclusions inapplicable, telemetry confirms critical incident. Vendor response SLA breach noted under contract terms as eligibility trigger.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_telemetry",
+          "none"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "planned maintenance",
+          "customer-caused event",
+          "force majeure"
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/Nemotron-3_5-Lightning",
+        "status": "succeeded",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T13:02:11.659746+00:00",
+        "prompt_sha256": "ed7c913e52ff5ca204128a8d0ad7588ccb187f531735a6a47a1c64a4406db388",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "response_id": "chatcmpl-3539904f",
+        "response_model": "nvidia/Nemotron-3_5-Lightning",
+        "elapsed_ms": 16281.49,
+        "usage": {
+          "completion_tokens": 3716,
+          "prompt_tokens": 1071,
+          "total_tokens": 4787
+        }
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": false,
+          "reasons": [
+            "Reasoning confidence below autonomous-action threshold.",
+            "Reasoning has missing or unknown evidence citations."
+          ],
+          "at": "2026-10-09T13:02:27.945129+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_022",
+      "category": "capped",
+      "expected_route": "claim_ready",
+      "actual_route": "human_review",
+      "route_correct": false,
+      "expected_amount_usd": 50000.0,
+      "actual_amount_usd": 50000.0,
+      "amount_exact": true,
+      "confidence": 0.84,
+      "latency_ms": 13222.18,
+      "expected_model_decision": "supported",
+      "model_assessment": {
+        "decision": "supported",
+        "confidence": 0.84,
+        "summary": "Eligible critical cooling incident confirmed under contract SLA. Vendor/service match, no exclusion triggers, telemetry and ticket evidence substantiate incident.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_telemetry",
+          "ev_ticket"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "No planned-maintenance window overlaps incident (maintenance_windows: [])",
+          "No customer-caused or force majeure evidence present",
+          "Vendor/service match: ThermaCore / critical_cooling_loop_b aligns with contract_thermacore_2026",
+          "Incident timestamps (2026-10-01T00:21:00Z to 08:21:00Z) within 30\u2011day claim window",
+          "Telemetry (ev_telemetry) records pump_state fault, gpu_inlet_temp_c 34.0, confirming critical cooling threshold crossing",
+          "Vendor acknowledgment (ev_ack) at 00:45:00Z; SLA response_minutes 15 breached (22\u2011minute response), but SLA 7.4 eligibility for incident compensation is not automatically voided by response-time breach per evidence review"
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/Nemotron-3_5-Lightning",
+        "status": "succeeded",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T13:02:27.946434+00:00",
+        "prompt_sha256": "0235cbcf1bb900b9bc4ff69b61439bffa340bc4f906145c91541e97db4f08b96",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "response_id": "chatcmpl-308d8f83",
+        "response_model": "nvidia/Nemotron-3_5-Lightning",
+        "elapsed_ms": 13213.75,
+        "usage": {
+          "completion_tokens": 3177,
+          "prompt_tokens": 1071,
+          "total_tokens": 4248
+        }
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": false,
+          "reasons": [
+            "Reasoning confidence below autonomous-action threshold."
+          ],
+          "at": "2026-10-09T13:02:41.167487+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_023",
+      "category": "full_exclusion",
+      "expected_route": "closed",
+      "actual_route": "closed",
+      "route_correct": true,
+      "expected_amount_usd": 0.0,
+      "actual_amount_usd": 0.0,
+      "amount_exact": true,
+      "confidence": 0.82,
+      "latency_ms": 4997.54,
+      "expected_model_decision": "not_supported",
+      "model_assessment": {
+        "decision": "not_supported",
+        "confidence": 0.96,
+        "summary": "The incident matches the vendor and service covered by SLA sla.cooling.7.4, but the maintenance window ev_maintenance_0 shows approved planned maintenance that fully overlaps the incident period, triggering the exclusion for planned maintenance. Therefore the claim is not eligible.",
+        "citations": [
+          "ev_contract",
+          "ev_maintenance_0",
+          "ev_telemetry"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": []
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/nemotron-3-super-120b-a12b",
+        "status": "succeeded",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T13:02:41.168600+00:00",
+        "prompt_sha256": "1403afe6c250821d68e3991625bbbb0f2e6bfe94ba6762a818450a6ef2c67081",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "response_id": "chatcmpl-84bc4bf3a4a9a409",
+        "response_model": "nvidia/nemotron-3-super-120b-a12b",
+        "elapsed_ms": 4994.72,
+        "usage": {
+          "completion_tokens": 515,
+          "prompt_tokens": 1333,
+          "total_tokens": 1848
+        }
+      },
+      "policy": []
+    },
+    {
+      "id": "eval_024",
+      "category": "partial_overlap",
+      "expected_route": "human_review",
+      "actual_route": "human_review",
+      "route_correct": true,
+      "expected_amount_usd": 25000.0,
+      "actual_amount_usd": 25000.0,
+      "amount_exact": true,
+      "confidence": 0.5,
+      "latency_ms": 4984.57,
+      "expected_model_decision": "needs_review",
+      "model_assessment": {
+        "decision": "needs_review",
+        "confidence": 0.5,
+        "summary": "Incident matches SLA-covered service and vendor, with telemetry confirming a fault and timely ticket/vendor acknowledgment. However, a planned maintenance window overlaps the incident from 00:53 to 01:23 UTC, which is an exclusion per the SLA. Because the overlap creates uncertainty about the eligible portion of the outage, a definitive supported or not_supported determination cannot be made without further apportionment.",
+        "citations": [
+          "ev_contract",
+          "ev_telemetry",
+          "ev_maintenance_0",
+          "ev_ticket",
+          "ev_ack"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "> Overlap period: 2026-10-01T00:53:00Z to 2026-10-01T01:23:00Z (maintenance) vs incident 00:23-03:23Z."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/nemotron-3-super-120b-a12b",
+        "status": "succeeded",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T13:02:46.163805+00:00",
+        "prompt_sha256": "4650588d36b7031ec8d3450b644d85c8ab29c80c095d964399ab70b6925ab85c",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "response_id": "chatcmpl-b2ec1070079290b0",
+        "response_model": "nvidia/nemotron-3-super-120b-a12b",
+        "elapsed_ms": 4981.11,
+        "usage": {
+          "completion_tokens": 598,
+          "prompt_tokens": 1347,
+          "total_tokens": 1945
+        }
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": false,
+          "reasons": [
+            "Contradictory evidence requires human review.",
+            "Reasoning does not support autonomous action.",
+            "Reasoning confidence below autonomous-action threshold.",
+            "Reasoning reports unresolved contradictions.",
+            "Reasoning must cite both the governing SLA and incident telemetry."
+          ],
+          "at": "2026-10-09T13:02:51.149963+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_025",
+      "category": "wrong_vendor",
+      "expected_route": "closed",
+      "actual_route": "closed",
+      "route_correct": true,
+      "expected_amount_usd": 0.0,
+      "actual_amount_usd": 0.0,
+      "amount_exact": true,
+      "confidence": 0.94,
+      "latency_ms": 14684.54,
+      "expected_model_decision": "not_supported",
+      "model_assessment": {
+        "decision": "not_supported",
+        "confidence": 0.94,
+        "summary": "Vendor/service mismatch excludes eligibility. Contract contract_thermacore_2026 governs vendor ThermaCore for service critical_cooling_loop_b (SLA sla.cooling.7.4). Incident eval_025 is sourced from vendor OtherVendor, creating a vendor divergence despite service name alignment. No maintenance windows overlap. Governing SLA citation: sla.cooling.7.4. Telemetry citation: ev_telemetry. Maintenance window IDs: [].",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_telemetry",
+          "[]"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "Vendor mismatch: contract_thermacore_2026 vendor=ThermaCore vs incident vendor=OtherVendor",
+          "Service critical_cooling_loop_b present in both but vendor divergence per SLA terms invalidates claim",
+          "Exclusions listed in SLA (planned maintenance, customer-caused event, force majeure) do not apply, but vendor ineligibility is determinative"
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/Nemotron-3_5-Lightning",
+        "status": "succeeded",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T13:02:51.149963+00:00",
+        "prompt_sha256": "f05b69d6361396c525ff5a25cd259250bf165e9106287258a82f74909c1480bf",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "response_id": "chatcmpl-35037fb4",
+        "response_model": "nvidia/Nemotron-3_5-Lightning",
+        "elapsed_ms": 14680.53,
+        "usage": {
+          "completion_tokens": 2562,
+          "prompt_tokens": 1053,
+          "total_tokens": 3615
+        }
+      },
+      "policy": []
+    },
+    {
+      "id": "eval_026",
+      "category": "eligible",
+      "expected_route": "claim_ready",
+      "actual_route": "human_review",
+      "route_correct": false,
+      "expected_amount_usd": 30000.0,
+      "actual_amount_usd": 30000.0,
+      "amount_exact": true,
+      "confidence": 0.92,
+      "latency_ms": 13335.27,
+      "expected_model_decision": "supported",
+      "model_assessment": {
+        "decision": "supported",
+        "confidence": 0.92,
+        "summary": "Vendor/service match, no exclusion windows, telemetry and ticket evidence align with SLA 7.4 eligibility. Vendor response SLA breach cited as claim trigger by entitlement reasons. No planned maintenance or conflicting evidence detected.",
+        "citations": [
+          "governing_sla:sla.cooling.7.4",
+          "telemetry_reference:ev_telemetry",
+          "maintenance_ids:[]"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "SLA exclusions (planned maintenance, customer-caused event, force majeure) do not overlap incident timestamps or vendor/service context",
+          "maintenance_windows in incident record are empty, confirming no scheduled maintenance exclusion applies",
+          "ev_telemetry confirms pump_state fault and temperature/pressure threshold crossing at incident start (2026-10-01T00:25:00Z)"
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/Nemotron-3_5-Lightning",
+        "status": "succeeded",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T13:03:05.833171+00:00",
+        "prompt_sha256": "f800502a7eb752b0c25cfffb6c2bb10ee43ad698127cd72038e94e628355f05c",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "response_id": "chatcmpl-ca3ab590",
+        "response_model": "nvidia/Nemotron-3_5-Lightning",
+        "elapsed_ms": 13324.98,
+        "usage": {
+          "completion_tokens": 3376,
+          "prompt_tokens": 1071,
+          "total_tokens": 4447
+        }
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": false,
+          "reasons": [
+            "Reasoning has missing or unknown evidence citations.",
+            "Reasoning must cite both the governing SLA and incident telemetry."
+          ],
+          "at": "2026-10-09T13:03:19.169495+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_027",
+      "category": "capped",
+      "expected_route": "claim_ready",
+      "actual_route": "human_review",
+      "route_correct": false,
+      "expected_amount_usd": 50000.0,
+      "actual_amount_usd": 50000.0,
+      "amount_exact": true,
+      "confidence": 0.0,
+      "latency_ms": 15744.17,
+      "expected_model_decision": "supported",
+      "model_assessment": {
+        "decision": "needs_review",
+        "confidence": 0.0,
+        "summary": "Model assessment unavailable or invalid; human review is required.",
+        "citations": [],
+        "contradictions": [
+          "Model assessment could not be validated."
+        ],
+        "exclusion_analysis": []
+      },
+      "assisted_model_decision_correct": false,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/Nemotron-3_5-Lightning",
+        "status": "failed",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T13:03:19.171534+00:00",
+        "prompt_sha256": "c1a6ed46952c3ea0731ccfbf82cb55e3dd64d55079cbd939eee7ba87225a9ccd",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "error_code": "incomplete_output"
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": false,
+          "reasons": [
+            "Reasoning does not support autonomous action.",
+            "Live mode requires a successful real provider assessment for this action.",
+            "Reasoning confidence below autonomous-action threshold.",
+            "Reasoning reports unresolved contradictions.",
+            "Reasoning has missing or unknown evidence citations.",
+            "Reasoning must cite both the governing SLA and incident telemetry."
+          ],
+          "at": "2026-10-09T13:03:34.912708+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_028",
+      "category": "full_exclusion",
+      "expected_route": "closed",
+      "actual_route": "closed",
+      "route_correct": true,
+      "expected_amount_usd": 0.0,
+      "actual_amount_usd": 0.0,
+      "amount_exact": true,
+      "confidence": 0.82,
+      "latency_ms": 4766.64,
+      "expected_model_decision": "not_supported",
+      "model_assessment": {
+        "decision": "not_supported",
+        "confidence": 0.96,
+        "summary": "Incident fully overlaps approved planned maintenance, which is excluded per SLA.",
+        "citations": [
+          "ev_contract",
+          "ev_maintenance_0",
+          "ev_telemetry",
+          "ev_ticket",
+          "ev_ack"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": []
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/nemotron-3-super-120b-a12b",
+        "status": "succeeded",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T13:03:34.912708+00:00",
+        "prompt_sha256": "fba2bec0e30c970361aef831e5859031600c8bf2a9835f86b2e1dc8c3b36ed5a",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "response_id": "chatcmpl-aa7b7befb3993f7e",
+        "response_model": "nvidia/nemotron-3-super-120b-a12b",
+        "elapsed_ms": 4756.6,
+        "usage": {
+          "completion_tokens": 516,
+          "prompt_tokens": 1333,
+          "total_tokens": 1849
+        }
+      },
+      "policy": []
+    },
+    {
+      "id": "eval_029",
+      "category": "partial_overlap",
+      "expected_route": "human_review",
+      "actual_route": "human_review",
+      "route_correct": true,
+      "expected_amount_usd": 25000.0,
+      "actual_amount_usd": 25000.0,
+      "amount_exact": true,
+      "confidence": 0.78,
+      "latency_ms": 11356.38,
+      "expected_model_decision": "needs_review",
+      "model_assessment": {
+        "decision": "needs_review",
+        "confidence": 0.78,
+        "summary": "Vendor and service match SLA, telemetry confirms incident, but planned maintenance overlaps incident (exclusion) requiring attribution review.",
+        "citations": [
+          "ev_contract",
+          "ev_telemetry",
+          "ev_maintenance_0",
+          "ev_ticket",
+          "ev_ack"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": []
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/nemotron-3-super-120b-a12b",
+        "status": "succeeded",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T13:03:39.682339+00:00",
+        "prompt_sha256": "08ac6db04d73daad733b4216b8fb1f2d5a3602e8aeb1076552a0859fff975b4d",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "response_id": "chatcmpl-a7fcda67e4716466",
+        "response_model": "nvidia/nemotron-3-super-120b-a12b",
+        "elapsed_ms": 11351.6,
+        "usage": {
+          "completion_tokens": 1081,
+          "prompt_tokens": 1347,
+          "total_tokens": 2428
+        }
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": false,
+          "reasons": [
+            "Contradictory evidence requires human review.",
+            "Reasoning does not support autonomous action.",
+            "Reasoning confidence below autonomous-action threshold.",
+            "Reasoning reports unresolved contradictions.",
+            "Reasoning must cite both the governing SLA and incident telemetry."
+          ],
+          "at": "2026-10-09T13:03:51.036717+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_030",
+      "category": "wrong_vendor",
+      "expected_route": "closed",
+      "actual_route": "closed",
+      "route_correct": true,
+      "expected_amount_usd": 0.0,
+      "actual_amount_usd": 0.0,
+      "amount_exact": true,
+      "confidence": 0.92,
+      "latency_ms": 11131.87,
+      "expected_model_decision": "not_supported",
+      "model_assessment": {
+        "decision": "not_supported",
+        "confidence": 0.92,
+        "summary": "Incident vendor (OtherVendor) does not match governing contract vendor (ThermaCore). Service matches (critical_cooling_loop_b), but vendor mismatch triggers full exclusion per SLA terms. No applicable maintenance windows. Governing SLA and telemetry IDs cited as required.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_telemetry"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "vendor_mismatch: contract_vendor=ThermaCore, incident_vendor=OtherVendor",
+          "service_match: critical_cooling_loop_b both match",
+          "maintenance_windows: none (maintenance_windows: [])",
+          "exclusions: planned maintenance, customer-caused event, force majeure \u2013 none apply, but vendor mismatch is a full exclusion per SLA clause 7.4"
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/Nemotron-3_5-Lightning",
+        "status": "succeeded",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T13:03:51.036717+00:00",
+        "prompt_sha256": "5567d231d68176a6590bec9922c4db9ea336cc4bd0baaf937f45f43c1206dccb",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "response_id": "chatcmpl-ea855180",
+        "response_model": "nvidia/Nemotron-3_5-Lightning",
+        "elapsed_ms": 11124.02,
+        "usage": {
+          "completion_tokens": 2692,
+          "prompt_tokens": 1053,
+          "total_tokens": 3745
+        }
+      },
+      "policy": []
+    },
+    {
+      "id": "eval_031",
+      "category": "eligible",
+      "expected_route": "claim_ready",
+      "actual_route": "human_review",
+      "route_correct": false,
+      "expected_amount_usd": 20000.0,
+      "actual_amount_usd": 20000.0,
+      "amount_exact": true,
+      "confidence": 0.0,
+      "latency_ms": 18422.84,
+      "expected_model_decision": "supported",
+      "model_assessment": {
+        "decision": "needs_review",
+        "confidence": 0.0,
+        "summary": "Model assessment unavailable or invalid; human review is required.",
+        "citations": [],
+        "contradictions": [
+          "Model assessment could not be validated."
+        ],
+        "exclusion_analysis": []
+      },
+      "assisted_model_decision_correct": false,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/Nemotron-3_5-Lightning",
+        "status": "failed",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T13:04:02.171827+00:00",
+        "prompt_sha256": "0670eb1e2cc5ff6dfb758c5625d76a585a7a58b5bdeea798aa1ebe79b36637b7",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "error_code": "incomplete_output"
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": false,
+          "reasons": [
+            "Reasoning does not support autonomous action.",
+            "Live mode requires a successful real provider assessment for this action.",
+            "Reasoning confidence below autonomous-action threshold.",
+            "Reasoning reports unresolved contradictions.",
+            "Reasoning has missing or unknown evidence citations.",
+            "Reasoning must cite both the governing SLA and incident telemetry."
+          ],
+          "at": "2026-10-09T13:04:20.590826+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_032",
+      "category": "capped",
+      "expected_route": "claim_ready",
+      "actual_route": "human_review",
+      "route_correct": false,
+      "expected_amount_usd": 50000.0,
+      "actual_amount_usd": 50000.0,
+      "amount_exact": true,
+      "confidence": 0.83,
+      "latency_ms": 18126.96,
+      "expected_model_decision": "supported",
+      "model_assessment": {
+        "decision": "supported",
+        "confidence": 0.83,
+        "summary": "Vendor (ThermaCore) and service (critical_cooling_loop_b) match SLA sla.cooling.7.4. Telemetry ev_telemetry (2026-10-01T00:31:00Z) records pump_state fault and gpu_inlet_temp_c 34.0, corroborating a critical cooling incident. No maintenance windows overlap the incident (maintenance_windows: []). Vendor acknowledgment ev_ack at 2026-10-01T00:55:00Z confirms incident reporting, though response time (~22 min from ticket open at 00:33:00Z) exceeds the SLA 15-minute response threshold. Exclusions (planned maintenance, customer-caused event, force majeure) have no supporting evidence. Claim is eligible under SLA terms.",
+        "citations": [
+          "ev_contract",
+          "ev_telemetry",
+          "ev_ticket",
+          "ev_ack",
+          "sla.cooling.7.4"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "no_planned_maintenance_window_overlaps_incident",
+          "no_customer_caused_event_evidence",
+          "no_force_majeure_evidence"
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/Nemotron-3_5-Lightning",
+        "status": "succeeded",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T13:04:20.596003+00:00",
+        "prompt_sha256": "ad12cc03013c9e26ebdf9bd7d8d0baf85df88dcc442418fa8209a1f3c1493fc2",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "response_id": "chatcmpl-098af661",
+        "response_model": "nvidia/Nemotron-3_5-Lightning",
+        "elapsed_ms": 18119.06,
+        "usage": {
+          "completion_tokens": 4096,
+          "prompt_tokens": 1071,
+          "total_tokens": 5167
+        }
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": false,
+          "reasons": [
+            "Reasoning confidence below autonomous-action threshold."
+          ],
+          "at": "2026-10-09T13:04:38.717594+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_033",
+      "category": "full_exclusion",
+      "expected_route": "closed",
+      "actual_route": "closed",
+      "route_correct": true,
+      "expected_amount_usd": 0.0,
+      "actual_amount_usd": 0.0,
+      "amount_exact": true,
+      "confidence": 0.82,
+      "latency_ms": 4378.02,
+      "expected_model_decision": "not_supported",
+      "model_assessment": {
+        "decision": "not_supported",
+        "confidence": 0.95,
+        "summary": "The incident occurred entirely within an approved planned maintenance window, which is explicitly excluded under the SLA\u2019s exclusion list. Therefore no payment is due.",
+        "citations": [
+          "ev_contract",
+          "ev_maintenance_0"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "> Exclusion \"planned maintenance\" matches maintenance window 2026-10-01T00:32:00Z \u2192 2026-10-01T02:32:00Z (ev_maintenance_0).",
+          "> Service and vendor match SLA critical_cooling_loop_b / ThermaCore (ev_contract).",
+          "> No other exclusions apply."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/nemotron-3-super-120b-a12b",
+        "status": "succeeded",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T13:04:38.717594+00:00",
+        "prompt_sha256": "7645132734c5776fb98b3065dd316c770a8c57fc3abafd5567e0fc3b0122a65d",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "response_id": "chatcmpl-b1eb202d565bb008",
+        "response_model": "nvidia/nemotron-3-super-120b-a12b",
+        "elapsed_ms": 4368.73,
+        "usage": {
+          "completion_tokens": 437,
+          "prompt_tokens": 1333,
+          "total_tokens": 1770
+        }
+      },
+      "policy": []
+    },
+    {
+      "id": "eval_034",
+      "category": "partial_overlap",
+      "expected_route": "human_review",
+      "actual_route": "human_review",
+      "route_correct": true,
+      "expected_amount_usd": 25000.0,
+      "actual_amount_usd": 25000.0,
+      "amount_exact": true,
+      "confidence": 0.6,
+      "latency_ms": 4610.88,
+      "expected_model_decision": "needs_review",
+      "model_assessment": {
+        "decision": "needs_review",
+        "confidence": 0.6,
+        "summary": "Incident matches SLA service and vendor, but a planned maintenance window overlaps part of the incident, creating uncertainty about the eligible duration.",
+        "citations": [
+          "ev_contract",
+          "ev_telemetry",
+          "ev_maintenance_0"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "The SLA excludes planned maintenance; maintenance window 2026-10-01T01:03:00Z to 2026-10-01T01:33:00Z overlaps the incident from 01:03 to 01:33, requiring review of how much of the incident is attributable to excluded maintenance."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/nemotron-3-super-120b-a12b",
+        "status": "succeeded",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T13:04:43.097923+00:00",
+        "prompt_sha256": "0409651a2b6ace83b2cd70da1dfdf89d9e2d909f1332f8be33e3732c5c461c50",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "response_id": "chatcmpl-82fa4f006eb96a3c",
+        "response_model": "nvidia/nemotron-3-super-120b-a12b",
+        "elapsed_ms": 4607.31,
+        "usage": {
+          "completion_tokens": 617,
+          "prompt_tokens": 1347,
+          "total_tokens": 1964
+        }
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": false,
+          "reasons": [
+            "Contradictory evidence requires human review.",
+            "Reasoning does not support autonomous action.",
+            "Reasoning confidence below autonomous-action threshold.",
+            "Reasoning reports unresolved contradictions.",
+            "Reasoning must cite both the governing SLA and incident telemetry."
+          ],
+          "at": "2026-10-09T13:04:47.706721+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_035",
+      "category": "wrong_vendor",
+      "expected_route": "closed",
+      "actual_route": "closed",
+      "route_correct": true,
+      "expected_amount_usd": 0.0,
+      "actual_amount_usd": 0.0,
+      "amount_exact": true,
+      "confidence": 0.96,
+      "latency_ms": 11374.54,
+      "expected_model_decision": "not_supported",
+      "model_assessment": {
+        "decision": "not_supported",
+        "confidence": 0.96,
+        "summary": "Vendor/service mismatch prevents eligibility under contract terms.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_telemetry",
+          "contract_thermacore_2026"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "Contract vendor is ThermaCore; incident vendor is OtherVendor. Service critical_cooling_loop_b matches, but vendor divergence is a full ineligibility trigger per investigative rules.",
+          "No planned maintenance or force majeure exclusions apply, but vendor mismatch alone invokes not_supported status."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/Nemotron-3_5-Lightning",
+        "status": "succeeded",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T13:04:47.708295+00:00",
+        "prompt_sha256": "b78f68cead2a290bda044286c868ceb3d3f523e193f8b90b2938bf39e99e2f64",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "response_id": "chatcmpl-100ab48d",
+        "response_model": "nvidia/Nemotron-3_5-Lightning",
+        "elapsed_ms": 11372.4,
+        "usage": {
+          "completion_tokens": 2376,
+          "prompt_tokens": 1053,
+          "total_tokens": 3429
+        }
+      },
+      "policy": []
+    },
+    {
+      "id": "eval_036",
+      "category": "eligible",
+      "expected_route": "claim_ready",
+      "actual_route": "human_review",
+      "route_correct": false,
+      "expected_amount_usd": 40000.0,
+      "actual_amount_usd": 40000.0,
+      "amount_exact": true,
+      "confidence": 0.0,
+      "latency_ms": 19539.81,
+      "expected_model_decision": "supported",
+      "model_assessment": {
+        "decision": "needs_review",
+        "confidence": 0.0,
+        "summary": "Model assessment unavailable or invalid; human review is required.",
+        "citations": [],
+        "contradictions": [
+          "Model assessment could not be validated."
+        ],
+        "exclusion_analysis": []
+      },
+      "assisted_model_decision_correct": false,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/Nemotron-3_5-Lightning",
+        "status": "failed",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T13:04:59.080581+00:00",
+        "prompt_sha256": "bb665ec4be8b9e353f13c267a290475e40ceb1c91600d0b6c5b14f324452ef83",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "error_code": "incomplete_output"
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": false,
+          "reasons": [
+            "Reasoning does not support autonomous action.",
+            "Live mode requires a successful real provider assessment for this action.",
+            "Reasoning confidence below autonomous-action threshold.",
+            "Reasoning reports unresolved contradictions.",
+            "Reasoning has missing or unknown evidence citations.",
+            "Reasoning must cite both the governing SLA and incident telemetry."
+          ],
+          "at": "2026-10-09T13:05:18.622186+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_037",
+      "category": "capped",
+      "expected_route": "claim_ready",
+      "actual_route": "human_review",
+      "route_correct": false,
+      "expected_amount_usd": 50000.0,
+      "actual_amount_usd": 50000.0,
+      "amount_exact": true,
+      "confidence": 0.86,
+      "latency_ms": 14920.59,
+      "expected_model_decision": "supported",
+      "model_assessment": {
+        "decision": "supported",
+        "confidence": 0.86,
+        "summary": "Eligible claim under SLA Section 7.4 with evidenced telemetry and no excluded conditions.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_telemetry",
+          "ev_ticket",
+          "ev_ack"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "planned maintenance",
+          "customer-caused event",
+          "force majeure"
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/Nemotron-3_5-Lightning",
+        "status": "succeeded",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T13:05:18.623837+00:00",
+        "prompt_sha256": "1ac1541a35041e895c303b13b4ee90d8e9f953d91671a6e5293803b334a79d0a",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "response_id": "chatcmpl-140cdf34",
+        "response_model": "nvidia/Nemotron-3_5-Lightning",
+        "elapsed_ms": 14916.9,
+        "usage": {
+          "completion_tokens": 3802,
+          "prompt_tokens": 1071,
+          "total_tokens": 4873
+        }
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": false,
+          "reasons": [
+            "Reasoning confidence below autonomous-action threshold."
+          ],
+          "at": "2026-10-09T13:05:33.542974+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_038",
+      "category": "full_exclusion",
+      "expected_route": "closed",
+      "actual_route": "closed",
+      "route_correct": true,
+      "expected_amount_usd": 0.0,
+      "actual_amount_usd": 0.0,
+      "amount_exact": true,
+      "confidence": 0.82,
+      "latency_ms": 3836.35,
+      "expected_model_decision": "not_supported",
+      "model_assessment": {
+        "decision": "not_supported",
+        "confidence": 0.95,
+        "summary": "Incident fully overlaps approved planned maintenance, which is an explicit exclusion.",
+        "citations": [
+          "ev_maintenance_0",
+          "ev_contract"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "> Maintenance window (ev_maintenance_0) covers entire incident period (2026-10-01T00:37:00Z to 2026-10-01T02:37:00Z).",
+          "> SLA exclusion list includes \"planned maintenance\" (ev_contract).",
+          "> No other exclusions (customer-caused, force majeure) apply."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/nemotron-3-super-120b-a12b",
+        "status": "succeeded",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T13:05:33.542974+00:00",
+        "prompt_sha256": "82c66cdfc74e86d0848fe164bebfb5e56e6ff1e56bdbfc411d2a2fc4ab4a794f",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "response_id": "chatcmpl-a488161a4be9b894",
+        "response_model": "nvidia/nemotron-3-super-120b-a12b",
+        "elapsed_ms": 3833.15,
+        "usage": {
+          "completion_tokens": 477,
+          "prompt_tokens": 1333,
+          "total_tokens": 1810
+        }
+      },
+      "policy": []
+    },
+    {
+      "id": "eval_039",
+      "category": "partial_overlap",
+      "expected_route": "human_review",
+      "actual_route": "human_review",
+      "route_correct": true,
+      "expected_amount_usd": 25000.0,
+      "actual_amount_usd": 25000.0,
+      "amount_exact": true,
+      "confidence": 0.5,
+      "latency_ms": 26152.2,
+      "expected_model_decision": "needs_review",
+      "model_assessment": {
+        "decision": "needs_review",
+        "confidence": 0.5,
+        "summary": "Incident matches SLA sla.cooling.7.4 for vendor ThermaCore and service critical_cooling_loop_b, confirmed by telemetry ev_telemetry. However, planned maintenance ev_maintenance_0 overlaps the incident (01:08\u201301:38 UTC), triggering the SLA exclusion for planned maintenance. This partial overlap creates conflicting eligibility signals, so the claim cannot be definitively supported without further review.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_telemetry",
+          "ev_maintenance_0",
+          "ev_contract"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "> Overlap with planned maintenance (ev_maintenance_0) triggers exclusion per SLA sla.cooling.7.4 exclusions list.",
+          "> Remaining non\u2011overlapping periods may be eligible, but exact allocation requires review."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/nemotron-3-super-120b-a12b",
+        "status": "succeeded",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T13:05:37.380088+00:00",
+        "prompt_sha256": "417d8d6f819e1b7806fd83d3fb85ae8cbe4dfab961e7429e346f8ea8302c63d9",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "response_id": "chatcmpl-84128e914cea350d",
+        "response_model": "nvidia/nemotron-3-super-120b-a12b",
+        "elapsed_ms": 26148.41,
+        "usage": {
+          "completion_tokens": 969,
+          "prompt_tokens": 1347,
+          "total_tokens": 2316
+        }
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": false,
+          "reasons": [
+            "Contradictory evidence requires human review.",
+            "Reasoning does not support autonomous action.",
+            "Reasoning confidence below autonomous-action threshold.",
+            "Reasoning reports unresolved contradictions."
+          ],
+          "at": "2026-10-09T13:06:03.530161+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_040",
+      "category": "wrong_vendor",
+      "expected_route": "closed",
+      "actual_route": "closed",
+      "route_correct": true,
+      "expected_amount_usd": 0.0,
+      "actual_amount_usd": 0.0,
+      "amount_exact": true,
+      "confidence": 0.93,
+      "latency_ms": 10690.7,
+      "expected_model_decision": "not_supported",
+      "model_assessment": {
+        "decision": "not_supported",
+        "confidence": 0.93,
+        "summary": "Vendor-service mismatch prevents eligibility. Incident vendor 'OtherVendor' does not match contract vendor 'ThermaCore' under SLA sla.cooling.7.4, despite service alignment (critical_cooling_loop_b) and telemetry evidence.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_telemetry"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "Incident vendor/service does not match the governing contract."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/Nemotron-3_5-Lightning",
+        "status": "succeeded",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T13:06:03.530161+00:00",
+        "prompt_sha256": "9182ec0b90cb99ff527e7b6b820fdbd44e7f363229e9e53f828e0be6d16cf1b5",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "response_id": "chatcmpl-bd00e38e",
+        "response_model": "nvidia/Nemotron-3_5-Lightning",
+        "elapsed_ms": 10685.34,
+        "usage": {
+          "completion_tokens": 2803,
+          "prompt_tokens": 1053,
+          "total_tokens": 3856
+        }
+      },
+      "policy": []
+    },
+    {
+      "id": "eval_041",
+      "category": "eligible",
+      "expected_route": "claim_ready",
+      "actual_route": "human_review",
+      "route_correct": false,
+      "expected_amount_usd": 30000.0,
+      "actual_amount_usd": 30000.0,
+      "amount_exact": true,
+      "confidence": 0.0,
+      "latency_ms": 16960.95,
+      "expected_model_decision": "supported",
+      "model_assessment": {
+        "decision": "needs_review",
+        "confidence": 0.0,
+        "summary": "Model assessment unavailable or invalid; human review is required.",
+        "citations": [],
+        "contradictions": [
+          "Model assessment could not be validated."
+        ],
+        "exclusion_analysis": []
+      },
+      "assisted_model_decision_correct": false,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/Nemotron-3_5-Lightning",
+        "status": "failed",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T13:06:14.222939+00:00",
+        "prompt_sha256": "c6b0169efe917351ca652b5f0fd93d7762bef464e0860ba82b396c745aa116b9",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "error_code": "incomplete_output"
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": false,
+          "reasons": [
+            "Reasoning does not support autonomous action.",
+            "Live mode requires a successful real provider assessment for this action.",
+            "Reasoning confidence below autonomous-action threshold.",
+            "Reasoning reports unresolved contradictions.",
+            "Reasoning has missing or unknown evidence citations.",
+            "Reasoning must cite both the governing SLA and incident telemetry."
+          ],
+          "at": "2026-10-09T13:06:31.183524+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_042",
+      "category": "capped",
+      "expected_route": "claim_ready",
+      "actual_route": "human_review",
+      "route_correct": false,
+      "expected_amount_usd": 50000.0,
+      "actual_amount_usd": 50000.0,
+      "amount_exact": true,
+      "confidence": 0.0,
+      "latency_ms": 17658.7,
+      "expected_model_decision": "supported",
+      "model_assessment": {
+        "decision": "needs_review",
+        "confidence": 0.0,
+        "summary": "Model assessment unavailable or invalid; human review is required.",
+        "citations": [],
+        "contradictions": [
+          "Model assessment could not be validated."
+        ],
+        "exclusion_analysis": []
+      },
+      "assisted_model_decision_correct": false,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/Nemotron-3_5-Lightning",
+        "status": "failed",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T13:06:31.183524+00:00",
+        "prompt_sha256": "5ed8746882d70f1c799a1108617f780ecb7dc9ba7bdb1a6789833202882002e5",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "error_code": "incomplete_output"
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": false,
+          "reasons": [
+            "Reasoning does not support autonomous action.",
+            "Live mode requires a successful real provider assessment for this action.",
+            "Reasoning confidence below autonomous-action threshold.",
+            "Reasoning reports unresolved contradictions.",
+            "Reasoning has missing or unknown evidence citations.",
+            "Reasoning must cite both the governing SLA and incident telemetry."
+          ],
+          "at": "2026-10-09T13:06:48.841734+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_043",
+      "category": "full_exclusion",
+      "expected_route": "closed",
+      "actual_route": "closed",
+      "route_correct": true,
+      "expected_amount_usd": 0.0,
+      "actual_amount_usd": 0.0,
+      "amount_exact": true,
+      "confidence": 0.82,
+      "latency_ms": 16014.62,
+      "expected_model_decision": "not_supported",
+      "model_assessment": {
+        "decision": "not_supported",
+        "confidence": 0.95,
+        "summary": "Incident fully overlaps an approved planned maintenance window, which is an explicit exclusion in the SLA (section 7.4). Therefore no compensation is payable under the contract.",
+        "citations": [
+          "ev_contract",
+          "ev_maintenance_0"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "> Exclusion \"planned maintenance\" matches maintenance window ev_maintenance_0 (2026-10-01T00:42:00Z \u2192 2026-10-01T02:42:00Z) that completely covers the incident interval.",
+          "> Vendor acknowledgement (ev_ack) and telemetry (ev_telemetry) confirm the incident occurred but do not override the planned\u2011maintenance exclusion."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/nemotron-3-super-120b-a12b",
+        "status": "succeeded",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T13:06:48.842836+00:00",
+        "prompt_sha256": "431617cb3e5bc4a27341fdade98214924183858245e7e3292d87ff7cd3bbb0eb",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "response_id": "chatcmpl-b940eeaeff24289d",
+        "response_model": "nvidia/nemotron-3-super-120b-a12b",
+        "elapsed_ms": 16002.33,
+        "usage": {
+          "completion_tokens": 397,
+          "prompt_tokens": 1333,
+          "total_tokens": 1730
+        }
+      },
+      "policy": []
+    },
+    {
+      "id": "eval_044",
+      "category": "partial_overlap",
+      "expected_route": "human_review",
+      "actual_route": "human_review",
+      "route_correct": true,
+      "expected_amount_usd": 25000.0,
+      "actual_amount_usd": 25000.0,
+      "amount_exact": true,
+      "confidence": 0.5,
+      "latency_ms": 6939.28,
+      "expected_model_decision": "needs_review",
+      "model_assessment": {
+        "decision": "needs_review",
+        "confidence": 0.5,
+        "summary": "Incident matches SLA service and vendor, but a planned maintenance window overlaps part of the incident, requiring attribution review before final eligibility can be determined.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_telemetry",
+          "ev_maintenance_0"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "> Maintenance window 2026-10-01T01:13:00Z to 2026-10-01T01:43:00Z overlaps incident (ev_maintenance_0); SLA excludes planned maintenance (sla.cooling.7.4)."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/nemotron-3-super-120b-a12b",
+        "status": "succeeded",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T13:07:04.856727+00:00",
+        "prompt_sha256": "074e1b6de50cfcc76d77ae55c8b9ac271d7e519d087e878cf3ee066508c18e8b",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "response_id": "chatcmpl-afb23d4d95cf3ab0",
+        "response_model": "nvidia/nemotron-3-super-120b-a12b",
+        "elapsed_ms": 6932.75,
+        "usage": {
+          "completion_tokens": 750,
+          "prompt_tokens": 1347,
+          "total_tokens": 2097
+        }
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": false,
+          "reasons": [
+            "Contradictory evidence requires human review.",
+            "Reasoning does not support autonomous action.",
+            "Reasoning confidence below autonomous-action threshold.",
+            "Reasoning reports unresolved contradictions."
+          ],
+          "at": "2026-10-09T13:07:11.795985+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_045",
+      "category": "wrong_vendor",
+      "expected_route": "closed",
+      "actual_route": "closed",
+      "route_correct": true,
+      "expected_amount_usd": 0.0,
+      "actual_amount_usd": 0.0,
+      "amount_exact": true,
+      "confidence": 0.93,
+      "latency_ms": 15785.02,
+      "expected_model_decision": "not_supported",
+      "model_assessment": {
+        "decision": "not_supported",
+        "confidence": 0.93,
+        "summary": "Vendor/service mismatch between contract and incident records. The governing contract specifies ThermaCore for critical_cooling_loop_b, while the incident is logged under OtherVendor. Per InfraClaim policy, this mismatch triggers not_supported. No maintenance windows overlap, and telemetry evidence (ev_telemetry) confirms a pump fault at incident onset, but vendor identity disqualifies the claim.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_telemetry"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "contract exclusions: planned maintenance, customer-caused event, force majeure \u2013 none apply; vendor mismatch is the disqualifying factor",
+          "incident telemetry (ev_telemetry): gpu_inlet_temp_c=34.0, coolant_pressure_bar=1.8, pump_state=fault at 2026-10-01T00:44:00Z",
+          "ticket evidence (ev_ticket): opened 2026-10-01T00:46:00Z",
+          "vendor acknowledgment (ev_ack): 2026-10-01T01:08:00Z",
+          "maintenance windows: none applicable (maintenance_windows: [])"
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/Nemotron-3_5-Lightning",
+        "status": "succeeded",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T13:07:11.795985+00:00",
+        "prompt_sha256": "92a51e348852bb1690eb820bf5191e3efa73eef0196e68c2ac44dfd5bb0080d7",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "response_id": "chatcmpl-c065b8e7",
+        "response_model": "nvidia/Nemotron-3_5-Lightning",
+        "elapsed_ms": 15777.99,
+        "usage": {
+          "completion_tokens": 2721,
+          "prompt_tokens": 1053,
+          "total_tokens": 3774
+        }
+      },
+      "policy": []
+    },
+    {
+      "id": "eval_046",
+      "category": "eligible",
+      "expected_route": "claim_ready",
+      "actual_route": "human_review",
+      "route_correct": false,
+      "expected_amount_usd": 20000.0,
+      "actual_amount_usd": 20000.0,
+      "amount_exact": true,
+      "confidence": 0.0,
+      "latency_ms": 29363.11,
+      "expected_model_decision": "supported",
+      "model_assessment": {
+        "decision": "needs_review",
+        "confidence": 0.0,
+        "summary": "Model assessment unavailable or invalid; human review is required.",
+        "citations": [],
+        "contradictions": [
+          "Model assessment could not be validated."
+        ],
+        "exclusion_analysis": []
+      },
+      "assisted_model_decision_correct": false,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/Nemotron-3_5-Lightning",
+        "status": "failed",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T13:07:27.577079+00:00",
+        "prompt_sha256": "d6f41b1c3d1b05f2580a20dc9fa1b073968746ea7739fec8716cc6c528efe778",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "error_code": "incomplete_output"
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": false,
+          "reasons": [
+            "Reasoning does not support autonomous action.",
+            "Live mode requires a successful real provider assessment for this action.",
+            "Reasoning confidence below autonomous-action threshold.",
+            "Reasoning reports unresolved contradictions.",
+            "Reasoning has missing or unknown evidence citations.",
+            "Reasoning must cite both the governing SLA and incident telemetry."
+          ],
+          "at": "2026-10-09T13:07:56.943652+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_047",
+      "category": "capped",
+      "expected_route": "claim_ready",
+      "actual_route": "human_review",
+      "route_correct": false,
+      "expected_amount_usd": 50000.0,
+      "actual_amount_usd": 50000.0,
+      "amount_exact": true,
+      "confidence": 0.89,
+      "latency_ms": 30673.88,
+      "expected_model_decision": "supported",
+      "model_assessment": {
+        "decision": "supported",
+        "confidence": 0.89,
+        "summary": "Vendor/service match, SLA governs, telemetry confirms incident, no exclusion applies, response SLA breached but recorded as eligibility factor by entitlement. All evidence collectively supports the claim.",
+        "citations": [
+          "governing_sla: sla.cooling.7.4",
+          "telemetry_id: ev_telemetry",
+          "maintenance_ids: []",
+          "evidence_ids: ev_contract, ev_ticket, ev_ack, ev_telemetry"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "No planned-maintenance window overlaps the incident (maintenance_windows empty)",
+          "No customer-caused event identified in ticket or telemetry",
+          "No force majeure indicated in contract exclusions or incident notes",
+          "exclusion_applies: false (per entitlement and independent review)"
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/Nemotron-3_5-Lightning",
+        "status": "succeeded",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T13:07:56.944846+00:00",
+        "prompt_sha256": "ea97c5ac56e941e22d8dd5240ee2bad9544111ba5658696a584193589a7e2efe",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "response_id": "chatcmpl-f0196a51",
+        "response_model": "nvidia/Nemotron-3_5-Lightning",
+        "elapsed_ms": 30669.21,
+        "usage": {
+          "completion_tokens": 3984,
+          "prompt_tokens": 1071,
+          "total_tokens": 5055
+        }
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": false,
+          "reasons": [
+            "Reasoning confidence below autonomous-action threshold.",
+            "Reasoning has missing or unknown evidence citations.",
+            "Reasoning must cite both the governing SLA and incident telemetry."
+          ],
+          "at": "2026-10-09T13:08:27.617420+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_048",
+      "category": "full_exclusion",
+      "expected_route": "closed",
+      "actual_route": "closed",
+      "route_correct": true,
+      "expected_amount_usd": 0.0,
+      "actual_amount_usd": 0.0,
+      "amount_exact": true,
+      "confidence": 0.82,
+      "latency_ms": 4986.6,
+      "expected_model_decision": "not_supported",
+      "model_assessment": {
+        "decision": "not_supported",
+        "confidence": 0.95,
+        "summary": "Incident matches vendor and service under SLA sla.cooling.7.4, but approved planned maintenance fully overlaps the incident period, triggering the planned\u2011maintenance exclusion.",
+        "citations": [
+          "ev_contract",
+          "ev_telemetry",
+          "ev_maintenance_0"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "> Maintenance window 2026-10-01T00:47:00Z\u20132026-10-01T02:47:00Z fully overlaps incident (same start/end).",
+          "> SLA excludes \"planned maintenance\".",
+          "> No other conflicting evidence."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/nemotron-3-super-120b-a12b",
+        "status": "succeeded",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T13:08:27.617420+00:00",
+        "prompt_sha256": "2f4f127fbb21ff9993e6a254cf554016bba9ec963155e88e1425d270d04d241b",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "response_id": "chatcmpl-b6e3bc0213b23e10",
+        "response_model": "nvidia/nemotron-3-super-120b-a12b",
+        "elapsed_ms": 4983.08,
+        "usage": {
+          "completion_tokens": 524,
+          "prompt_tokens": 1333,
+          "total_tokens": 1857
+        }
+      },
+      "policy": []
+    },
+    {
+      "id": "eval_049",
+      "category": "partial_overlap",
+      "expected_route": "human_review",
+      "actual_route": "human_review",
+      "route_correct": true,
+      "expected_amount_usd": 25000.0,
+      "actual_amount_usd": 25000.0,
+      "amount_exact": true,
+      "confidence": 0.5,
+      "latency_ms": 13695.54,
+      "expected_model_decision": "needs_review",
+      "model_assessment": {
+        "decision": "needs_review",
+        "confidence": 0.5,
+        "summary": "The incident matches the contracted service and vendor, and the SLA covers critical cooling incidents. However, a planned maintenance window overlaps part of the incident, triggering the SLA exclusion for planned maintenance. Because it is unclear how much of the incident duration should be excluded versus considered eligible, a definitive eligibility determination cannot be made without further review.",
+        "citations": [
+          "ev_contract",
+          "ev_maintenance_0",
+          "ev_ack",
+          "ev_ticket",
+          "ev_telemetry"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "Exclusion clause: planned maintenance (see ev_contract)",
+          "Maintenance overlap: 2026-10-01T01:18:00Z to 2026-10-01T01:48:00Z (see ev_maintenance_0)"
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/nemotron-3-super-120b-a12b",
+        "status": "succeeded",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T13:08:32.605316+00:00",
+        "prompt_sha256": "5bd5dbb924d11a1f7ae2823a34f838529de1dba841367261485065162ccc14bb",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "response_id": "chatcmpl-a73565787b4be5c1",
+        "response_model": "nvidia/nemotron-3-super-120b-a12b",
+        "elapsed_ms": 13690.69,
+        "usage": {
+          "completion_tokens": 650,
+          "prompt_tokens": 1347,
+          "total_tokens": 1997
+        }
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": false,
+          "reasons": [
+            "Contradictory evidence requires human review.",
+            "Reasoning does not support autonomous action.",
+            "Reasoning confidence below autonomous-action threshold.",
+            "Reasoning reports unresolved contradictions.",
+            "Reasoning must cite both the governing SLA and incident telemetry."
+          ],
+          "at": "2026-10-09T13:08:46.299658+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_050",
+      "category": "wrong_vendor",
+      "expected_route": "closed",
+      "actual_route": "closed",
+      "route_correct": true,
+      "expected_amount_usd": 0.0,
+      "actual_amount_usd": 0.0,
+      "amount_exact": true,
+      "confidence": 0.93,
+      "latency_ms": 12353.9,
+      "expected_model_decision": "not_supported",
+      "model_assessment": {
+        "decision": "not_supported",
+        "confidence": 0.93,
+        "summary": "Incident vendor (OtherVendor) does not match governing contract vendor (ThermaCore), rendering the claim ineligible despite service alignment. No maintenance windows or planned exclusions are relevant; the sole blocker is vendor/service mismatch.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_telemetry"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "exclusion_applies: false",
+          "exclusion_reason: null",
+          "primary_blocker: vendor/service mismatch",
+          "governing_sla: sla.cooling.7.4",
+          "incident_id: eval_050",
+          "incident_vendor: OtherVendor",
+          "contract_vendor: Thermaco",
+          "incident_service: critical_cooling_loop_b",
+          "contract_service: critical_cooling_loop_b",
+          "telemetry_evidence: ev_telemetry",
+          "maintenance_window_ids: []"
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/Nemotron-3_5-Lightning",
+        "status": "succeeded",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T13:08:46.300689+00:00",
+        "prompt_sha256": "9469b881d4353aa021a9906abd267dee4f967fb7d460a357ea62919884a25e60",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "response_id": "chatcmpl-5d42b27d",
+        "response_model": "nvidia/Nemotron-3_5-Lightning",
+        "elapsed_ms": 12341.33,
+        "usage": {
+          "completion_tokens": 2774,
+          "prompt_tokens": 1053,
+          "total_tokens": 3827
+        }
+      },
+      "policy": []
+    }
+  ],
+  "notes": [
+    "Money, caps, time windows, and maintenance overlap are evaluated by deterministic Python.",
+    "Mock mode validates orchestration and safety logic; live mode is required before publishing model-quality claims.",
+    "No benchmark number should be presented externally without recording the mode and suite version.",
+    "Route accuracy is the final guarded system outcome, not standalone model accuracy.",
+    "Assisted model decisions receive deterministic entitlement/context; labels are independently specified.",
+    "Unsafe autonomous action rate measures unsafe claim-ready routing, not external vendor actions.",
+    "Provider failures remain in denominators; mock and HTTP test transports never qualify as live evidence."
+  ],
+  "preflight": {
+    "status": "ready",
+    "missing_models": [],
+    "available_nemotron_models": [
+      "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+      "nvidia/Nemotron-3-Ultra-550b-a55b",
+      "nvidia/Nemotron-3_5-Lightning",
+      "nvidia/nemotron-3-super-120b-a12b"
+    ],
+    "inference_verified": false,
+    "execution": "live"
+  },
+  "source_sha256": "238a37371a2d3ed2539a37fc371467536010a9c381ce1989ae224d627d87dc77",
+  "python_version": "3.11.9"
+}

@@ -1,0 +1,23 @@
+{
+  "run_at": "2026-10-13T10:03:59.866402+00:00",
+  "kind": "real-model manual-source smoke",
+  "vendor_mode": "simulated",
+  "scenario_count": 1,
+  "status": "completed",
+  "contract_status": 200,
+  "contract_detail": null,
+  "intake_status": 200,
+  "inference": {
+    "execution": "live",
+    "status": "succeeded",
+    "model": "nvidia/Nemotron-3_5-Lightning"
+  },
+  "assessment": "supported",
+  "case_state": "human_review",
+  "amount_usd": 40000.0,
+  "fixture_consistency": true,
+  "source_documents": 3,
+  "approval_status": 200,
+  "approval_state": "claim_ready",
+  "approval_detail": null
+}

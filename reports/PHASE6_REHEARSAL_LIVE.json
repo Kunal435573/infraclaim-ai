@@ -1,0 +1,11 @@
+{
+  "mode": "live",
+  "vendor_mode": "simulated",
+  "real_money_recovered": false,
+  "started_at": "2026-10-09T18:48:41.264139+00:00",
+  "steps": [
+    "Three-page PDF ingested; Section 7.4 on page 2"
+  ],
+  "status": "failed",
+  "failure": "Hero routed to human_review"
+}

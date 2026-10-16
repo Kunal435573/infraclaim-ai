@@ -1,0 +1,17 @@
+{
+  "id": "contract_thermacore_2026",
+  "customer": "NovaCompute",
+  "vendor": "ThermaCore",
+  "effective_date": "2026-01-01T00:00:00Z",
+  "sla": {
+    "id": "sla.cooling.7.4",
+    "title": "Critical Cooling Incident — Section 7.4",
+    "service": "critical_cooling_loop_b",
+    "response_minutes": 15,
+    "repair_minutes": 120,
+    "rate_per_eligible_hour_usd": 10000,
+    "cap_usd": 50000,
+    "claim_window_days": 30,
+    "exclusions": ["planned maintenance", "customer-caused event", "force majeure"]
+  }
+}

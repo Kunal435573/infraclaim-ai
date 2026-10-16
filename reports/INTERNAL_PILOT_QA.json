@@ -1,0 +1,14 @@
+{
+  "scenario": "isolated synthetic internal-pilot browser rehearsal",
+  "inference_mode": "mock",
+  "case_id": "case_a9e530fb30",
+  "source_pdf_archived": true,
+  "source_pdf_sha256_matches": true,
+  "initial_proposed_credit_usd": 36666.67,
+  "corrected_proposed_credit_usd": 40000.0,
+  "final_state": "human_review",
+  "amendments_recorded": 1,
+  "human_approval_recorded": false,
+  "vendor_claim_created": false,
+  "real_vendor_or_credit_activity": false
+}

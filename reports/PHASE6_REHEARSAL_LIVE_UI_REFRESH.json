@@ -1,0 +1,74 @@
+{
+  "mode": "live",
+  "vendor_mode": "simulated",
+  "real_money_recovered": false,
+  "started_at": "2026-10-09T20:09:51.702802+00:00",
+  "steps": [
+    "Three-page PDF ingested; Section 7.4 on page 2",
+    "submitted",
+    "disputed",
+    "defended",
+    "accepted",
+    "Restarted API; matched posted $40,000 simulated memo; duplicate reconciliation booked once",
+    "Ambiguous incident held for review; submission blocked"
+  ],
+  "status": "passed",
+  "investigation_inference": {
+    "requested_mode": "live",
+    "execution": "live",
+    "model": "nvidia/Nemotron-3_5-Lightning",
+    "status": "succeeded",
+    "attempts": 1,
+    "recorded_at": "2026-10-09T20:09:51.833748+00:00",
+    "prompt_sha256": "53fd95f9a98dac4e220b2fbaa0e301a3fbea1f1fd77fc2420d7a666264cf905b",
+    "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+    "http_status": 200,
+    "response_id": "chatcmpl-e6e439a5",
+    "response_model": "nvidia/Nemotron-3_5-Lightning",
+    "elapsed_ms": 18866.87,
+    "usage": {
+      "completion_tokens": 4986,
+      "prompt_tokens": 1567,
+      "total_tokens": 6553
+    }
+  },
+  "counter_inference": {
+    "requested_mode": "live",
+    "execution": "live",
+    "model": "nvidia/nemotron-3-super-120b-a12b",
+    "status": "succeeded",
+    "attempts": 1,
+    "recorded_at": "2026-10-09T20:10:10.762019+00:00",
+    "prompt_sha256": "7d7e5049b6e47bde7a2e275c2167879eabff6d2385d10a351e99e847c00f0f0c",
+    "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+    "http_status": 200,
+    "response_id": "chatcmpl-b6f19deceaf4f4c0",
+    "response_model": "nvidia/nemotron-3-super-120b-a12b",
+    "elapsed_ms": 5289.15,
+    "usage": {
+      "completion_tokens": 926,
+      "prompt_tokens": 1644,
+      "total_tokens": 2570
+    }
+  },
+  "ambiguous_inference": {
+    "requested_mode": "live",
+    "execution": "live",
+    "model": "nvidia/nemotron-3-super-120b-a12b",
+    "status": "succeeded",
+    "attempts": 1,
+    "recorded_at": "2026-10-09T20:10:16.166278+00:00",
+    "prompt_sha256": "fa83abc025a15fb7daf673978a93e6cc117a9a0be81c2e545030c49301d6168a",
+    "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+    "http_status": 200,
+    "response_id": "chatcmpl-a1b302337bfce87b",
+    "response_model": "nvidia/nemotron-3-super-120b-a12b",
+    "elapsed_ms": 4713.66,
+    "usage": {
+      "completion_tokens": 670,
+      "prompt_tokens": 1640,
+      "total_tokens": 2310
+    }
+  },
+  "simulated_verified_amount_usd": 40000
+}

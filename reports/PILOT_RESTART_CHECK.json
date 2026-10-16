@@ -1,0 +1,10 @@
+{
+  "checked_at": "2026-10-13T10:33:39.128169+00:00",
+  "case_id": "case_81c4ea8849",
+  "status": "passed",
+  "state": "verified",
+  "source_documents_checked": 3,
+  "contract_pdf_checksum_checked": true,
+  "duplicate_reconciliation_unchanged": true,
+  "vendor_mode": "simulated"
+}

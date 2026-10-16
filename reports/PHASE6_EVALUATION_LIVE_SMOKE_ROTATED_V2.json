@@ -1,0 +1,332 @@
+{
+  "suite": "infraclaim_phase6_v1",
+  "suite_sha256": "d9c4d970492877f72e89fd08e24b474b25ecf01273434d941a36bbc859ddb905",
+  "generated_at": "2026-10-09T19:36:52.533681+00:00",
+  "mode": "live",
+  "status": "completed",
+  "business_time": "2026-10-07T12:00:00+00:00",
+  "real_model_successes": 5,
+  "valid_assessments": 5,
+  "publishable_live_model_metrics": true,
+  "model_metrics": {
+    "assisted_decision_accuracy": 1.0,
+    "valid_output_rate": 1.0
+  },
+  "scenario_count": 5,
+  "metrics": {
+    "route_accuracy": 0.8,
+    "financial_exact_match": 1.0,
+    "unsafe_autonomous_action_rate": 0.0,
+    "human_review_or_close_safety_rate": 1.0,
+    "mean_latency_ms": 9131.89,
+    "p95_latency_ms": 13411.58
+  },
+  "category_counts": {
+    "capped": 1,
+    "eligible": 1,
+    "full_exclusion": 1,
+    "partial_overlap": 1,
+    "wrong_vendor": 1
+  },
+  "results": [
+    {
+      "id": "eval_001",
+      "category": "eligible",
+      "expected_route": "claim_ready",
+      "actual_route": "human_review",
+      "route_correct": false,
+      "expected_amount_usd": 20000.0,
+      "actual_amount_usd": 20000.0,
+      "amount_exact": true,
+      "confidence": 0.93,
+      "latency_ms": 11342.8,
+      "expected_model_decision": "supported",
+      "model_assessment": {
+        "decision": "supported",
+        "confidence": 0.93,
+        "summary": "Incident eval_001 for critical_cooling_loop_b is eligible under SLA sla.cooling.7.4; telemetry ev_telemetry confirms threshold breach, no planned-maintenance window overlaps, and vendor response SLA was breached at 22 minutes beyond the 15-minute requirement.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_telemetry",
+          "no maintenance record"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "planned maintenance",
+          "customer-caused event",
+          "force majeure"
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/Nemotron-3_5-Lightning",
+        "status": "succeeded",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T19:36:06.879286+00:00",
+        "prompt_sha256": "8a114d6788fdfcc6c460b090c73923632528c9893d148a5865e73d6714461747",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "response_id": "chatcmpl-752aa13e",
+        "response_model": "nvidia/Nemotron-3_5-Lightning",
+        "elapsed_ms": 11331.5,
+        "usage": {
+          "completion_tokens": 2761,
+          "prompt_tokens": 1133,
+          "total_tokens": 3894
+        }
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": false,
+          "reasons": [
+            "Reasoning has missing or unknown evidence citations."
+          ],
+          "at": "2026-10-09T19:36:18.214653+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_002",
+      "category": "capped",
+      "expected_route": "claim_ready",
+      "actual_route": "claim_ready",
+      "route_correct": true,
+      "expected_amount_usd": 50000.0,
+      "actual_amount_usd": 50000.0,
+      "amount_exact": true,
+      "confidence": 0.94,
+      "latency_ms": 13411.58,
+      "expected_model_decision": "supported",
+      "model_assessment": {
+        "decision": "supported",
+        "confidence": 0.94,
+        "summary": "ThermaCore vendor and critical_cooling_loop_b service match SLA sla.cooling.7.4; no planned-maintenance window overlaps the incident, and vendor response at 22 minutes breached the 15-minute SLA threshold. Telemetry (ev_telemetry) confirms pump fault and temperature threshold cross.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_telemetry"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "planned maintenance",
+          "customer-caused event",
+          "force majeure"
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/Nemotron-3_5-Lightning",
+        "status": "succeeded",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T19:36:18.219646+00:00",
+        "prompt_sha256": "ef3176bbff72c4e0cd3fbae8c99a9140571230f4341fe53564c80931858020b5",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "response_id": "chatcmpl-43105e62",
+        "response_model": "nvidia/Nemotron-3_5-Lightning",
+        "elapsed_ms": 13401.81,
+        "usage": {
+          "completion_tokens": 2868,
+          "prompt_tokens": 1133,
+          "total_tokens": 4001
+        }
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": true,
+          "reasons": [],
+          "at": "2026-10-09T19:36:31.627499+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_003",
+      "category": "full_exclusion",
+      "expected_route": "closed",
+      "actual_route": "closed",
+      "route_correct": true,
+      "expected_amount_usd": 0.0,
+      "actual_amount_usd": 0.0,
+      "amount_exact": true,
+      "confidence": 0.82,
+      "latency_ms": 4662.06,
+      "expected_model_decision": "not_supported",
+      "model_assessment": {
+        "decision": "not_supported",
+        "confidence": 0.97,
+        "summary": "The incident fully overlaps an approved planned maintenance window, which is excluded under SLA sla.cooling.7.4. Therefore the claim is not supported.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_telemetry",
+          "ev_maintenance_0"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": []
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/nemotron-3-super-120b-a12b",
+        "status": "succeeded",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T19:36:31.627499+00:00",
+        "prompt_sha256": "db76cf63ee12939426c888e50e64f42184e31a95db575c0962cd6f3e3cecffef",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "response_id": "chatcmpl-91df34aed3e8d1c8",
+        "response_model": "nvidia/nemotron-3-super-120b-a12b",
+        "elapsed_ms": 4656.12,
+        "usage": {
+          "completion_tokens": 479,
+          "prompt_tokens": 1395,
+          "total_tokens": 1874
+        }
+      },
+      "policy": []
+    },
+    {
+      "id": "eval_004",
+      "category": "partial_overlap",
+      "expected_route": "human_review",
+      "actual_route": "human_review",
+      "route_correct": true,
+      "expected_amount_usd": 25000.0,
+      "actual_amount_usd": 25000.0,
+      "amount_exact": true,
+      "confidence": 0.78,
+      "latency_ms": 4598.86,
+      "expected_model_decision": "needs_review",
+      "model_assessment": {
+        "decision": "needs_review",
+        "confidence": 0.78,
+        "summary": "Incident matches ThermaCore and critical_cooling_loop_b SLA, but planned maintenance overlaps part of the incident, triggering the planned\u2011maintenance exclusion and requiring further review.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_telemetry",
+          "ev_maintenance_0"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": []
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/nemotron-3-super-120b-a12b",
+        "status": "succeeded",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T19:36:36.291400+00:00",
+        "prompt_sha256": "0425a4b861b5b2cc0686430fb23adf0d211d4db3ccf109e726d6b1b7d5ca3f6c",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "response_id": "chatcmpl-941adf2feb553769",
+        "response_model": "nvidia/nemotron-3-super-120b-a12b",
+        "elapsed_ms": 4593.36,
+        "usage": {
+          "completion_tokens": 536,
+          "prompt_tokens": 1409,
+          "total_tokens": 1945
+        }
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": false,
+          "reasons": [
+            "Contradictory evidence requires human review.",
+            "Reasoning does not support autonomous action.",
+            "Reasoning confidence below autonomous-action threshold.",
+            "Reasoning reports unresolved contradictions."
+          ],
+          "at": "2026-10-09T19:36:40.886388+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_005",
+      "category": "wrong_vendor",
+      "expected_route": "closed",
+      "actual_route": "closed",
+      "route_correct": true,
+      "expected_amount_usd": 0.0,
+      "actual_amount_usd": 0.0,
+      "amount_exact": true,
+      "confidence": 0.93,
+      "latency_ms": 11644.15,
+      "expected_model_decision": "not_supported",
+      "model_assessment": {
+        "decision": "not_supported",
+        "confidence": 0.93,
+        "summary": "Vendor/service mismatch between incident and contract results in no eligible claim per SLA Section 7.4.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_telemetry",
+          "no maintenance citation"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "Incident vendor (OtherVendor) differs from contract vendor (ThermaCore); service overlap irrelevant due to vendor mismatch."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "live",
+        "execution": "live",
+        "model": "nvidia/Nemotron-3_5-Lightning",
+        "status": "succeeded",
+        "attempts": 1,
+        "recorded_at": "2026-10-09T19:36:40.886388+00:00",
+        "prompt_sha256": "2e865ba03fff3009ff4475fbdc9f9cf4f5699abf7cdd01c1d5476978f1fe1e68",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "http_status": 200,
+        "response_id": "chatcmpl-c14632b2",
+        "response_model": "nvidia/Nemotron-3_5-Lightning",
+        "elapsed_ms": 11638.42,
+        "usage": {
+          "completion_tokens": 2816,
+          "prompt_tokens": 1115,
+          "total_tokens": 3931
+        }
+      },
+      "policy": []
+    }
+  ],
+  "notes": [
+    "Money, caps, time windows, and maintenance overlap are evaluated by deterministic Python.",
+    "Mock mode validates orchestration and safety logic; live mode is required before publishing model-quality claims.",
+    "No benchmark number should be presented externally without recording the mode and suite version.",
+    "Route accuracy is the final guarded system outcome, not standalone model accuracy.",
+    "Assisted model decisions receive deterministic entitlement/context; labels are independently specified.",
+    "Unsafe autonomous action rate measures unsafe claim-ready routing, not external vendor actions.",
+    "Provider failures remain in denominators; mock and HTTP test transports never qualify as live evidence."
+  ],
+  "preflight": {
+    "status": "ready",
+    "missing_models": [],
+    "available_nemotron_models": [
+      "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+      "nvidia/Nemotron-3-Ultra-550b-a55b",
+      "nvidia/Nemotron-3_5-Lightning",
+      "nvidia/nemotron-3-super-120b-a12b"
+    ],
+    "inference_verified": false,
+    "execution": "live"
+  },
+  "source_sha256": "156663029baec1e87ff50cc15657884e2a73557c4e39e0210ecf59fbaa1a35b6",
+  "python_version": "3.11.9"
+}

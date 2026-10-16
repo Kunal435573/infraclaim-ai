@@ -1,0 +1,28 @@
+{
+  "recorded_at": "2026-10-09T11:47:17.643870+00:00",
+  "original_source_hashes_verified": {
+    "phase3": 41,
+    "phase5": 29
+  },
+  "backend_tests": 82,
+  "backend_failures": 0,
+  "frontend_production_build": "passed",
+  "docker_images_build": "passed",
+  "mock_scenarios": 50,
+  "mock_metrics": {
+    "route_accuracy": 1.0,
+    "financial_exact_match": 1.0,
+    "unsafe_autonomous_action_rate": 0.0,
+    "human_review_or_close_safety_rate": 1.0,
+    "mean_latency_ms": 3.37,
+    "p95_latency_ms": 4.65
+  },
+  "browser_rehearsal": "passed",
+  "api_rehearsal": "passed",
+  "local_container_rehearsal": "passed",
+  "real_model_scenarios_run": 0,
+  "live_status": "blocked_missing_nebius_key",
+  "remote_deployment_verified": false,
+  "vendor_mode": "simulated",
+  "real_money_recovered": false
+}

@@ -1,0 +1,51 @@
+[
+  {
+    "id": "inc_cooling_001",
+    "service": "critical_cooling_loop_b",
+    "vendor": "ThermaCore",
+    "start": "2026-10-05T14:03:00Z",
+    "end": "2026-10-05T18:03:00Z",
+    "severity": "critical",
+    "telemetry": {
+      "gpu_inlet_temp_c": 34.8,
+      "coolant_pressure_bar": 1.7,
+      "pump_state": "fault"
+    },
+    "ticket_opened_at": "2026-10-05T14:05:00Z",
+    "vendor_acknowledged_at": "2026-10-05T14:29:00Z",
+    "maintenance_windows": [
+      {
+        "start": "2026-10-05T12:00:00Z",
+        "end": "2026-10-05T13:00:00Z",
+        "description": "Scheduled cooling-loop inspection completed before incident."
+      }
+    ],
+    "notes": [
+      "Cooling Loop B pump fault detected by BMS.",
+      "No customer change was active when incident began."
+    ]
+  },
+  {
+    "id": "inc_cooling_ambiguous",
+    "service": "critical_cooling_loop_b",
+    "vendor": "ThermaCore",
+    "start": "2026-10-06T09:00:00Z",
+    "end": "2026-10-06T10:00:00Z",
+    "severity": "major",
+    "telemetry": {
+      "gpu_inlet_temp_c": 29.1,
+      "coolant_pressure_bar": 2.4,
+      "pump_state": "degraded"
+    },
+    "ticket_opened_at": "2026-10-06T09:04:00Z",
+    "vendor_acknowledged_at": "2026-10-06T09:10:00Z",
+    "maintenance_windows": [
+      {
+        "start": "2026-10-06T08:45:00Z",
+        "end": "2026-10-06T09:20:00Z",
+        "description": "Maintenance window partially overlaps incident; attribution requires review."
+      }
+    ],
+    "notes": ["Maintenance overlap creates an intentionally ambiguous evaluation case."]
+  }
+]

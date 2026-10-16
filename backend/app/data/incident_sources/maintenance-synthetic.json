@@ -1,0 +1,10 @@
+{
+  "synthetic_fixture": true,
+  "incident_id": "pilot_manual_001",
+  "system": "synthetic maintenance calendar export",
+  "windows": [{
+    "start": "2026-10-05T12:00:00Z",
+    "end": "2026-10-05T13:00:00Z",
+    "description": "Scheduled cooling-loop inspection completed before incident."
+  }]
+}

@@ -1,0 +1,2552 @@
+{
+  "suite": "infraclaim_phase6_v1",
+  "suite_sha256": "dba15740b63d9cdb1da19586c313e80e5d667b31711cf28ab0309ff2d5840cc3",
+  "generated_at": "2026-10-09T11:42:12.722505+00:00",
+  "mode": "mock",
+  "status": "completed",
+  "business_time": "2026-10-07T12:00:00+00:00",
+  "real_model_successes": 0,
+  "valid_assessments": 50,
+  "publishable_live_model_metrics": false,
+  "model_metrics": null,
+  "scenario_count": 50,
+  "metrics": {
+    "route_accuracy": 1.0,
+    "financial_exact_match": 1.0,
+    "unsafe_autonomous_action_rate": 0.0,
+    "human_review_or_close_safety_rate": 1.0,
+    "mean_latency_ms": 3.37,
+    "p95_latency_ms": 4.65
+  },
+  "category_counts": {
+    "capped": 10,
+    "eligible": 10,
+    "full_exclusion": 10,
+    "partial_overlap": 10,
+    "wrong_vendor": 10
+  },
+  "results": [
+    {
+      "id": "eval_001",
+      "category": "eligible",
+      "expected_route": "claim_ready",
+      "actual_route": "claim_ready",
+      "route_correct": true,
+      "expected_amount_usd": 20000.0,
+      "actual_amount_usd": 20000.0,
+      "amount_exact": true,
+      "confidence": 0.97,
+      "latency_ms": 7.08,
+      "expected_model_decision": "supported",
+      "model_assessment": {
+        "decision": "supported",
+        "confidence": 0.97,
+        "summary": "Mock assessment of the supplied evidence; no model was called.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_ticket",
+          "ev_ack",
+          "ev_telemetry"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "Mock fixture; deterministic policy checks maintenance overlap."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "mock",
+        "execution": "mock",
+        "model": null,
+        "status": "succeeded",
+        "attempts": 0,
+        "recorded_at": "2026-10-09T11:42:12.549361+00:00",
+        "prompt_sha256": "8943fed599e9de36318de8c1eaaee4b64babffcfa71897464e626c58e3ac0af5",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "elapsed_ms": 3.06
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": true,
+          "reasons": [],
+          "at": "2026-10-09T11:42:12.553635+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_002",
+      "category": "capped",
+      "expected_route": "claim_ready",
+      "actual_route": "claim_ready",
+      "route_correct": true,
+      "expected_amount_usd": 50000.0,
+      "actual_amount_usd": 50000.0,
+      "amount_exact": true,
+      "confidence": 0.97,
+      "latency_ms": 6.54,
+      "expected_model_decision": "supported",
+      "model_assessment": {
+        "decision": "supported",
+        "confidence": 0.97,
+        "summary": "Mock assessment of the supplied evidence; no model was called.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_ticket",
+          "ev_ack",
+          "ev_telemetry"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "Mock fixture; deterministic policy checks maintenance overlap."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "mock",
+        "execution": "mock",
+        "model": null,
+        "status": "succeeded",
+        "attempts": 0,
+        "recorded_at": "2026-10-09T11:42:12.557164+00:00",
+        "prompt_sha256": "3d0dfd2b3549090d7536acd8dda1d60c66e42960279513ecb77d47e75056d56c",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "elapsed_ms": 3.18
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": true,
+          "reasons": [],
+          "at": "2026-10-09T11:42:12.560174+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_003",
+      "category": "full_exclusion",
+      "expected_route": "closed",
+      "actual_route": "closed",
+      "route_correct": true,
+      "expected_amount_usd": 0.0,
+      "actual_amount_usd": 0.0,
+      "amount_exact": true,
+      "confidence": 0.82,
+      "latency_ms": 3.58,
+      "expected_model_decision": "not_supported",
+      "model_assessment": {
+        "decision": "not_supported",
+        "confidence": 0.97,
+        "summary": "Mock assessment of the supplied evidence; no model was called.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_ticket",
+          "ev_ack",
+          "ev_telemetry",
+          "ev_maintenance_0"
+        ],
+        "contradictions": [
+          "Maintenance window overlaps incident from 2026-10-01T00:02:00+00:00 to 2026-10-01T02:02:00+00:00."
+        ],
+        "exclusion_analysis": [
+          "Mock fixture; deterministic policy checks maintenance overlap."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "mock",
+        "execution": "mock",
+        "model": null,
+        "status": "succeeded",
+        "attempts": 0,
+        "recorded_at": "2026-10-09T11:42:12.563477+00:00",
+        "prompt_sha256": "2a375cf8fce7bd5ce652f5bbbc3097b7614c12a3ffb16812d08562fe2276d5ef",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "elapsed_ms": 1.87
+      },
+      "policy": []
+    },
+    {
+      "id": "eval_004",
+      "category": "partial_overlap",
+      "expected_route": "human_review",
+      "actual_route": "human_review",
+      "route_correct": true,
+      "expected_amount_usd": 25000.0,
+      "actual_amount_usd": 25000.0,
+      "amount_exact": true,
+      "confidence": 0.82,
+      "latency_ms": 2.84,
+      "expected_model_decision": "needs_review",
+      "model_assessment": {
+        "decision": "needs_review",
+        "confidence": 0.82,
+        "summary": "Mock assessment of the supplied evidence; no model was called.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_ticket",
+          "ev_ack",
+          "ev_telemetry",
+          "ev_maintenance_0"
+        ],
+        "contradictions": [
+          "Maintenance window overlaps incident from 2026-10-01T00:33:00+00:00 to 2026-10-01T01:03:00+00:00."
+        ],
+        "exclusion_analysis": [
+          "Mock fixture; deterministic policy checks maintenance overlap."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "mock",
+        "execution": "mock",
+        "model": null,
+        "status": "succeeded",
+        "attempts": 0,
+        "recorded_at": "2026-10-09T11:42:12.566147+00:00",
+        "prompt_sha256": "3fe16b6b436d8fd0a65065b137228d9f247283bb1370bd95a90c325810fa73ec",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "elapsed_ms": 1.45
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": false,
+          "reasons": [
+            "Contradictory evidence requires human review.",
+            "Reasoning does not support autonomous action.",
+            "Reasoning confidence below autonomous-action threshold.",
+            "Reasoning reports unresolved contradictions."
+          ],
+          "at": "2026-10-09T11:42:12.568159+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_005",
+      "category": "wrong_vendor",
+      "expected_route": "closed",
+      "actual_route": "closed",
+      "route_correct": true,
+      "expected_amount_usd": 0.0,
+      "actual_amount_usd": 0.0,
+      "amount_exact": true,
+      "confidence": 0.97,
+      "latency_ms": 2.33,
+      "expected_model_decision": "not_supported",
+      "model_assessment": {
+        "decision": "not_supported",
+        "confidence": 0.97,
+        "summary": "Mock assessment of the supplied evidence; no model was called.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_ticket",
+          "ev_ack",
+          "ev_telemetry"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "Mock fixture; deterministic policy checks maintenance overlap."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "mock",
+        "execution": "mock",
+        "model": null,
+        "status": "succeeded",
+        "attempts": 0,
+        "recorded_at": "2026-10-09T11:42:12.568159+00:00",
+        "prompt_sha256": "50fdd9f24bb5d90649aaa743f50a368ea14851c902d1cc80190800e241ad714d",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "elapsed_ms": 1.4
+      },
+      "policy": []
+    },
+    {
+      "id": "eval_006",
+      "category": "eligible",
+      "expected_route": "claim_ready",
+      "actual_route": "claim_ready",
+      "route_correct": true,
+      "expected_amount_usd": 40000.0,
+      "actual_amount_usd": 40000.0,
+      "amount_exact": true,
+      "confidence": 0.97,
+      "latency_ms": 3.73,
+      "expected_model_decision": "supported",
+      "model_assessment": {
+        "decision": "supported",
+        "confidence": 0.97,
+        "summary": "Mock assessment of the supplied evidence; no model was called.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_ticket",
+          "ev_ack",
+          "ev_telemetry"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "Mock fixture; deterministic policy checks maintenance overlap."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "mock",
+        "execution": "mock",
+        "model": null,
+        "status": "succeeded",
+        "attempts": 0,
+        "recorded_at": "2026-10-09T11:42:12.571848+00:00",
+        "prompt_sha256": "99b76a0d8d309ad48629187a2f5cad57d92424daa0acb99a9bb00e2cfe379a37",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "elapsed_ms": 1.9
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": true,
+          "reasons": [],
+          "at": "2026-10-09T11:42:12.574132+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_007",
+      "category": "capped",
+      "expected_route": "claim_ready",
+      "actual_route": "claim_ready",
+      "route_correct": true,
+      "expected_amount_usd": 50000.0,
+      "actual_amount_usd": 50000.0,
+      "amount_exact": true,
+      "confidence": 0.97,
+      "latency_ms": 3.84,
+      "expected_model_decision": "supported",
+      "model_assessment": {
+        "decision": "supported",
+        "confidence": 0.97,
+        "summary": "Mock assessment of the supplied evidence; no model was called.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_ticket",
+          "ev_ack",
+          "ev_telemetry"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "Mock fixture; deterministic policy checks maintenance overlap."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "mock",
+        "execution": "mock",
+        "model": null,
+        "status": "succeeded",
+        "attempts": 0,
+        "recorded_at": "2026-10-09T11:42:12.574132+00:00",
+        "prompt_sha256": "feadb6647b4cae2207e5206ca74b976b1d183c59757a56fa2fc02dd018c1ad55",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "elapsed_ms": 1.92
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": true,
+          "reasons": [],
+          "at": "2026-10-09T11:42:12.577179+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_008",
+      "category": "full_exclusion",
+      "expected_route": "closed",
+      "actual_route": "closed",
+      "route_correct": true,
+      "expected_amount_usd": 0.0,
+      "actual_amount_usd": 0.0,
+      "amount_exact": true,
+      "confidence": 0.82,
+      "latency_ms": 2.84,
+      "expected_model_decision": "not_supported",
+      "model_assessment": {
+        "decision": "not_supported",
+        "confidence": 0.97,
+        "summary": "Mock assessment of the supplied evidence; no model was called.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_ticket",
+          "ev_ack",
+          "ev_telemetry",
+          "ev_maintenance_0"
+        ],
+        "contradictions": [
+          "Maintenance window overlaps incident from 2026-10-01T00:07:00+00:00 to 2026-10-01T02:07:00+00:00."
+        ],
+        "exclusion_analysis": [
+          "Mock fixture; deterministic policy checks maintenance overlap."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "mock",
+        "execution": "mock",
+        "model": null,
+        "status": "succeeded",
+        "attempts": 0,
+        "recorded_at": "2026-10-09T11:42:12.579268+00:00",
+        "prompt_sha256": "469aa5174ef3599533865546096368e2ec2dacdeac0ab383c85ff54001a16374",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "elapsed_ms": 1.67
+      },
+      "policy": []
+    },
+    {
+      "id": "eval_009",
+      "category": "partial_overlap",
+      "expected_route": "human_review",
+      "actual_route": "human_review",
+      "route_correct": true,
+      "expected_amount_usd": 25000.0,
+      "actual_amount_usd": 25000.0,
+      "amount_exact": true,
+      "confidence": 0.82,
+      "latency_ms": 3.55,
+      "expected_model_decision": "needs_review",
+      "model_assessment": {
+        "decision": "needs_review",
+        "confidence": 0.82,
+        "summary": "Mock assessment of the supplied evidence; no model was called.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_ticket",
+          "ev_ack",
+          "ev_telemetry",
+          "ev_maintenance_0"
+        ],
+        "contradictions": [
+          "Maintenance window overlaps incident from 2026-10-01T00:38:00+00:00 to 2026-10-01T01:08:00+00:00."
+        ],
+        "exclusion_analysis": [
+          "Mock fixture; deterministic policy checks maintenance overlap."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "mock",
+        "execution": "mock",
+        "model": null,
+        "status": "succeeded",
+        "attempts": 0,
+        "recorded_at": "2026-10-09T11:42:12.581831+00:00",
+        "prompt_sha256": "cd32293cce6de57a4ae7e859dc24b1246a1b7f95abce0b635abbaeab2002d862",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "elapsed_ms": 1.59
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": false,
+          "reasons": [
+            "Contradictory evidence requires human review.",
+            "Reasoning does not support autonomous action.",
+            "Reasoning confidence below autonomous-action threshold.",
+            "Reasoning reports unresolved contradictions."
+          ],
+          "at": "2026-10-09T11:42:12.584993+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_010",
+      "category": "wrong_vendor",
+      "expected_route": "closed",
+      "actual_route": "closed",
+      "route_correct": true,
+      "expected_amount_usd": 0.0,
+      "actual_amount_usd": 0.0,
+      "amount_exact": true,
+      "confidence": 0.97,
+      "latency_ms": 2.36,
+      "expected_model_decision": "not_supported",
+      "model_assessment": {
+        "decision": "not_supported",
+        "confidence": 0.97,
+        "summary": "Mock assessment of the supplied evidence; no model was called.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_ticket",
+          "ev_ack",
+          "ev_telemetry"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "Mock fixture; deterministic policy checks maintenance overlap."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "mock",
+        "execution": "mock",
+        "model": null,
+        "status": "succeeded",
+        "attempts": 0,
+        "recorded_at": "2026-10-09T11:42:12.585593+00:00",
+        "prompt_sha256": "a6a1b720aefe0dd59cfb195b21903fcbf9bb0a90ca95eb22e08f6998038bc51f",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "elapsed_ms": 1.32
+      },
+      "policy": []
+    },
+    {
+      "id": "eval_011",
+      "category": "eligible",
+      "expected_route": "claim_ready",
+      "actual_route": "claim_ready",
+      "route_correct": true,
+      "expected_amount_usd": 30000.0,
+      "actual_amount_usd": 30000.0,
+      "amount_exact": true,
+      "confidence": 0.97,
+      "latency_ms": 2.94,
+      "expected_model_decision": "supported",
+      "model_assessment": {
+        "decision": "supported",
+        "confidence": 0.97,
+        "summary": "Mock assessment of the supplied evidence; no model was called.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_ticket",
+          "ev_ack",
+          "ev_telemetry"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "Mock fixture; deterministic policy checks maintenance overlap."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "mock",
+        "execution": "mock",
+        "model": null,
+        "status": "succeeded",
+        "attempts": 0,
+        "recorded_at": "2026-10-09T11:42:12.588222+00:00",
+        "prompt_sha256": "be7e9d445409c4a886c92107790ba053dad9be03f4fe45339239837a1728ee91",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "elapsed_ms": 1.61
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": true,
+          "reasons": [],
+          "at": "2026-10-09T11:42:12.589253+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_012",
+      "category": "capped",
+      "expected_route": "claim_ready",
+      "actual_route": "claim_ready",
+      "route_correct": true,
+      "expected_amount_usd": 50000.0,
+      "actual_amount_usd": 50000.0,
+      "amount_exact": true,
+      "confidence": 0.97,
+      "latency_ms": 2.9,
+      "expected_model_decision": "supported",
+      "model_assessment": {
+        "decision": "supported",
+        "confidence": 0.97,
+        "summary": "Mock assessment of the supplied evidence; no model was called.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_ticket",
+          "ev_ack",
+          "ev_telemetry"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "Mock fixture; deterministic policy checks maintenance overlap."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "mock",
+        "execution": "mock",
+        "model": null,
+        "status": "succeeded",
+        "attempts": 0,
+        "recorded_at": "2026-10-09T11:42:12.591170+00:00",
+        "prompt_sha256": "6e0089a989727f23def089044d8f7f956ee8c75028155ebca32f0d392e9d91cb",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "elapsed_ms": 1.44
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": true,
+          "reasons": [],
+          "at": "2026-10-09T11:42:12.593184+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_013",
+      "category": "full_exclusion",
+      "expected_route": "closed",
+      "actual_route": "closed",
+      "route_correct": true,
+      "expected_amount_usd": 0.0,
+      "actual_amount_usd": 0.0,
+      "amount_exact": true,
+      "confidence": 0.82,
+      "latency_ms": 2.84,
+      "expected_model_decision": "not_supported",
+      "model_assessment": {
+        "decision": "not_supported",
+        "confidence": 0.97,
+        "summary": "Mock assessment of the supplied evidence; no model was called.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_ticket",
+          "ev_ack",
+          "ev_telemetry",
+          "ev_maintenance_0"
+        ],
+        "contradictions": [
+          "Maintenance window overlaps incident from 2026-10-01T00:12:00+00:00 to 2026-10-01T02:12:00+00:00."
+        ],
+        "exclusion_analysis": [
+          "Mock fixture; deterministic policy checks maintenance overlap."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "mock",
+        "execution": "mock",
+        "model": null,
+        "status": "succeeded",
+        "attempts": 0,
+        "recorded_at": "2026-10-09T11:42:12.593738+00:00",
+        "prompt_sha256": "181e4de72d4f5e92ed90321be39de428927f88c621a9bee39d40fb62067a8c18",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "elapsed_ms": 1.54
+      },
+      "policy": []
+    },
+    {
+      "id": "eval_014",
+      "category": "partial_overlap",
+      "expected_route": "human_review",
+      "actual_route": "human_review",
+      "route_correct": true,
+      "expected_amount_usd": 25000.0,
+      "actual_amount_usd": 25000.0,
+      "amount_exact": true,
+      "confidence": 0.82,
+      "latency_ms": 2.88,
+      "expected_model_decision": "needs_review",
+      "model_assessment": {
+        "decision": "needs_review",
+        "confidence": 0.82,
+        "summary": "Mock assessment of the supplied evidence; no model was called.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_ticket",
+          "ev_ack",
+          "ev_telemetry",
+          "ev_maintenance_0"
+        ],
+        "contradictions": [
+          "Maintenance window overlaps incident from 2026-10-01T00:43:00+00:00 to 2026-10-01T01:13:00+00:00."
+        ],
+        "exclusion_analysis": [
+          "Mock fixture; deterministic policy checks maintenance overlap."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "mock",
+        "execution": "mock",
+        "model": null,
+        "status": "succeeded",
+        "attempts": 0,
+        "recorded_at": "2026-10-09T11:42:12.596991+00:00",
+        "prompt_sha256": "04bb0c677301201a9ec043a5deaad99db28da115b11c09aef31bb2916d7fff0a",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "elapsed_ms": 1.48
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": false,
+          "reasons": [
+            "Contradictory evidence requires human review.",
+            "Reasoning does not support autonomous action.",
+            "Reasoning confidence below autonomous-action threshold.",
+            "Reasoning reports unresolved contradictions."
+          ],
+          "at": "2026-10-09T11:42:12.599006+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_015",
+      "category": "wrong_vendor",
+      "expected_route": "closed",
+      "actual_route": "closed",
+      "route_correct": true,
+      "expected_amount_usd": 0.0,
+      "actual_amount_usd": 0.0,
+      "amount_exact": true,
+      "confidence": 0.97,
+      "latency_ms": 3.27,
+      "expected_model_decision": "not_supported",
+      "model_assessment": {
+        "decision": "not_supported",
+        "confidence": 0.97,
+        "summary": "Mock assessment of the supplied evidence; no model was called.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_ticket",
+          "ev_ack",
+          "ev_telemetry"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "Mock fixture; deterministic policy checks maintenance overlap."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "mock",
+        "execution": "mock",
+        "model": null,
+        "status": "succeeded",
+        "attempts": 0,
+        "recorded_at": "2026-10-09T11:42:12.600847+00:00",
+        "prompt_sha256": "be0a8595808b40691ab8f071832a10887eea9834f2587a4ce9a5366494804b08",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "elapsed_ms": 1.46
+      },
+      "policy": []
+    },
+    {
+      "id": "eval_016",
+      "category": "eligible",
+      "expected_route": "claim_ready",
+      "actual_route": "claim_ready",
+      "route_correct": true,
+      "expected_amount_usd": 20000.0,
+      "actual_amount_usd": 20000.0,
+      "amount_exact": true,
+      "confidence": 0.97,
+      "latency_ms": 3.43,
+      "expected_model_decision": "supported",
+      "model_assessment": {
+        "decision": "supported",
+        "confidence": 0.97,
+        "summary": "Mock assessment of the supplied evidence; no model was called.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_ticket",
+          "ev_ack",
+          "ev_telemetry"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "Mock fixture; deterministic policy checks maintenance overlap."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "mock",
+        "execution": "mock",
+        "model": null,
+        "status": "succeeded",
+        "attempts": 0,
+        "recorded_at": "2026-10-09T11:42:12.602887+00:00",
+        "prompt_sha256": "1e70bde090f285aca1d2dbd494031cf2de482dfd1717b5ea641c2a6c167c4f79",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "elapsed_ms": 1.89
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": true,
+          "reasons": [],
+          "at": "2026-10-09T11:42:12.605442+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_017",
+      "category": "capped",
+      "expected_route": "claim_ready",
+      "actual_route": "claim_ready",
+      "route_correct": true,
+      "expected_amount_usd": 50000.0,
+      "actual_amount_usd": 50000.0,
+      "amount_exact": true,
+      "confidence": 0.97,
+      "latency_ms": 2.78,
+      "expected_model_decision": "supported",
+      "model_assessment": {
+        "decision": "supported",
+        "confidence": 0.97,
+        "summary": "Mock assessment of the supplied evidence; no model was called.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_ticket",
+          "ev_ack",
+          "ev_telemetry"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "Mock fixture; deterministic policy checks maintenance overlap."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "mock",
+        "execution": "mock",
+        "model": null,
+        "status": "succeeded",
+        "attempts": 0,
+        "recorded_at": "2026-10-09T11:42:12.606000+00:00",
+        "prompt_sha256": "cf2cb9c46b1276c129ac26854bc9e5d5036c8f22b081c440773ba99aad01eef4",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "elapsed_ms": 1.43
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": true,
+          "reasons": [],
+          "at": "2026-10-09T11:42:12.608043+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_018",
+      "category": "full_exclusion",
+      "expected_route": "closed",
+      "actual_route": "closed",
+      "route_correct": true,
+      "expected_amount_usd": 0.0,
+      "actual_amount_usd": 0.0,
+      "amount_exact": true,
+      "confidence": 0.82,
+      "latency_ms": 2.87,
+      "expected_model_decision": "not_supported",
+      "model_assessment": {
+        "decision": "not_supported",
+        "confidence": 0.97,
+        "summary": "Mock assessment of the supplied evidence; no model was called.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_ticket",
+          "ev_ack",
+          "ev_telemetry",
+          "ev_maintenance_0"
+        ],
+        "contradictions": [
+          "Maintenance window overlaps incident from 2026-10-01T00:17:00+00:00 to 2026-10-01T02:17:00+00:00."
+        ],
+        "exclusion_analysis": [
+          "Mock fixture; deterministic policy checks maintenance overlap."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "mock",
+        "execution": "mock",
+        "model": null,
+        "status": "succeeded",
+        "attempts": 0,
+        "recorded_at": "2026-10-09T11:42:12.608043+00:00",
+        "prompt_sha256": "3968109a2e226137c70c65abf537eaa69afed33b346e32e713d70902029f0976",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "elapsed_ms": 1.7
+      },
+      "policy": []
+    },
+    {
+      "id": "eval_019",
+      "category": "partial_overlap",
+      "expected_route": "human_review",
+      "actual_route": "human_review",
+      "route_correct": true,
+      "expected_amount_usd": 25000.0,
+      "actual_amount_usd": 25000.0,
+      "amount_exact": true,
+      "confidence": 0.82,
+      "latency_ms": 3.36,
+      "expected_model_decision": "needs_review",
+      "model_assessment": {
+        "decision": "needs_review",
+        "confidence": 0.82,
+        "summary": "Mock assessment of the supplied evidence; no model was called.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_ticket",
+          "ev_ack",
+          "ev_telemetry",
+          "ev_maintenance_0"
+        ],
+        "contradictions": [
+          "Maintenance window overlaps incident from 2026-10-01T00:48:00+00:00 to 2026-10-01T01:18:00+00:00."
+        ],
+        "exclusion_analysis": [
+          "Mock fixture; deterministic policy checks maintenance overlap."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "mock",
+        "execution": "mock",
+        "model": null,
+        "status": "succeeded",
+        "attempts": 0,
+        "recorded_at": "2026-10-09T11:42:12.612713+00:00",
+        "prompt_sha256": "bdf54e341e037a224034c304ef6792e99f0016f9705ef485c59329a20f394e03",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "elapsed_ms": 1.91
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": false,
+          "reasons": [
+            "Contradictory evidence requires human review.",
+            "Reasoning does not support autonomous action.",
+            "Reasoning confidence below autonomous-action threshold.",
+            "Reasoning reports unresolved contradictions."
+          ],
+          "at": "2026-10-09T11:42:12.614736+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_020",
+      "category": "wrong_vendor",
+      "expected_route": "closed",
+      "actual_route": "closed",
+      "route_correct": true,
+      "expected_amount_usd": 0.0,
+      "actual_amount_usd": 0.0,
+      "amount_exact": true,
+      "confidence": 0.97,
+      "latency_ms": 3.59,
+      "expected_model_decision": "not_supported",
+      "model_assessment": {
+        "decision": "not_supported",
+        "confidence": 0.97,
+        "summary": "Mock assessment of the supplied evidence; no model was called.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_ticket",
+          "ev_ack",
+          "ev_telemetry"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "Mock fixture; deterministic policy checks maintenance overlap."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "mock",
+        "execution": "mock",
+        "model": null,
+        "status": "succeeded",
+        "attempts": 0,
+        "recorded_at": "2026-10-09T11:42:12.615267+00:00",
+        "prompt_sha256": "66324868e606b79ba62e77e3b7837ab5ec2a3ba1de7dd625d86e45ec57684755",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "elapsed_ms": 1.79
+      },
+      "policy": []
+    },
+    {
+      "id": "eval_021",
+      "category": "eligible",
+      "expected_route": "claim_ready",
+      "actual_route": "claim_ready",
+      "route_correct": true,
+      "expected_amount_usd": 40000.0,
+      "actual_amount_usd": 40000.0,
+      "amount_exact": true,
+      "confidence": 0.97,
+      "latency_ms": 3.36,
+      "expected_model_decision": "supported",
+      "model_assessment": {
+        "decision": "supported",
+        "confidence": 0.97,
+        "summary": "Mock assessment of the supplied evidence; no model was called.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_ticket",
+          "ev_ack",
+          "ev_telemetry"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "Mock fixture; deterministic policy checks maintenance overlap."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "mock",
+        "execution": "mock",
+        "model": null,
+        "status": "succeeded",
+        "attempts": 0,
+        "recorded_at": "2026-10-09T11:42:12.618679+00:00",
+        "prompt_sha256": "ed7c913e52ff5ca204128a8d0ad7588ccb187f531735a6a47a1c64a4406db388",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "elapsed_ms": 1.63
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": true,
+          "reasons": [],
+          "at": "2026-10-09T11:42:12.621828+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_022",
+      "category": "capped",
+      "expected_route": "claim_ready",
+      "actual_route": "claim_ready",
+      "route_correct": true,
+      "expected_amount_usd": 50000.0,
+      "actual_amount_usd": 50000.0,
+      "amount_exact": true,
+      "confidence": 0.97,
+      "latency_ms": 2.62,
+      "expected_model_decision": "supported",
+      "model_assessment": {
+        "decision": "supported",
+        "confidence": 0.97,
+        "summary": "Mock assessment of the supplied evidence; no model was called.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_ticket",
+          "ev_ack",
+          "ev_telemetry"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "Mock fixture; deterministic policy checks maintenance overlap."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "mock",
+        "execution": "mock",
+        "model": null,
+        "status": "succeeded",
+        "attempts": 0,
+        "recorded_at": "2026-10-09T11:42:12.622860+00:00",
+        "prompt_sha256": "0235cbcf1bb900b9bc4ff69b61439bffa340bc4f906145c91541e97db4f08b96",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "elapsed_ms": 1.36
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": true,
+          "reasons": [],
+          "at": "2026-10-09T11:42:12.624598+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_023",
+      "category": "full_exclusion",
+      "expected_route": "closed",
+      "actual_route": "closed",
+      "route_correct": true,
+      "expected_amount_usd": 0.0,
+      "actual_amount_usd": 0.0,
+      "amount_exact": true,
+      "confidence": 0.82,
+      "latency_ms": 2.63,
+      "expected_model_decision": "not_supported",
+      "model_assessment": {
+        "decision": "not_supported",
+        "confidence": 0.97,
+        "summary": "Mock assessment of the supplied evidence; no model was called.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_ticket",
+          "ev_ack",
+          "ev_telemetry",
+          "ev_maintenance_0"
+        ],
+        "contradictions": [
+          "Maintenance window overlaps incident from 2026-10-01T00:22:00+00:00 to 2026-10-01T02:22:00+00:00."
+        ],
+        "exclusion_analysis": [
+          "Mock fixture; deterministic policy checks maintenance overlap."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "mock",
+        "execution": "mock",
+        "model": null,
+        "status": "succeeded",
+        "attempts": 0,
+        "recorded_at": "2026-10-09T11:42:12.625383+00:00",
+        "prompt_sha256": "1403afe6c250821d68e3991625bbbb0f2e6bfe94ba6762a818450a6ef2c67081",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "elapsed_ms": 1.44
+      },
+      "policy": []
+    },
+    {
+      "id": "eval_024",
+      "category": "partial_overlap",
+      "expected_route": "human_review",
+      "actual_route": "human_review",
+      "route_correct": true,
+      "expected_amount_usd": 25000.0,
+      "actual_amount_usd": 25000.0,
+      "amount_exact": true,
+      "confidence": 0.82,
+      "latency_ms": 3.3,
+      "expected_model_decision": "needs_review",
+      "model_assessment": {
+        "decision": "needs_review",
+        "confidence": 0.82,
+        "summary": "Mock assessment of the supplied evidence; no model was called.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_ticket",
+          "ev_ack",
+          "ev_telemetry",
+          "ev_maintenance_0"
+        ],
+        "contradictions": [
+          "Maintenance window overlaps incident from 2026-10-01T00:53:00+00:00 to 2026-10-01T01:23:00+00:00."
+        ],
+        "exclusion_analysis": [
+          "Mock fixture; deterministic policy checks maintenance overlap."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "mock",
+        "execution": "mock",
+        "model": null,
+        "status": "succeeded",
+        "attempts": 0,
+        "recorded_at": "2026-10-09T11:42:12.627546+00:00",
+        "prompt_sha256": "4650588d36b7031ec8d3450b644d85c8ab29c80c095d964399ab70b6925ab85c",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "elapsed_ms": 1.35
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": false,
+          "reasons": [
+            "Contradictory evidence requires human review.",
+            "Reasoning does not support autonomous action.",
+            "Reasoning confidence below autonomous-action threshold.",
+            "Reasoning reports unresolved contradictions."
+          ],
+          "at": "2026-10-09T11:42:12.630319+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_025",
+      "category": "wrong_vendor",
+      "expected_route": "closed",
+      "actual_route": "closed",
+      "route_correct": true,
+      "expected_amount_usd": 0.0,
+      "actual_amount_usd": 0.0,
+      "amount_exact": true,
+      "confidence": 0.97,
+      "latency_ms": 2.68,
+      "expected_model_decision": "not_supported",
+      "model_assessment": {
+        "decision": "not_supported",
+        "confidence": 0.97,
+        "summary": "Mock assessment of the supplied evidence; no model was called.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_ticket",
+          "ev_ack",
+          "ev_telemetry"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "Mock fixture; deterministic policy checks maintenance overlap."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "mock",
+        "execution": "mock",
+        "model": null,
+        "status": "succeeded",
+        "attempts": 0,
+        "recorded_at": "2026-10-09T11:42:12.630903+00:00",
+        "prompt_sha256": "f05b69d6361396c525ff5a25cd259250bf165e9106287258a82f74909c1480bf",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "elapsed_ms": 1.63
+      },
+      "policy": []
+    },
+    {
+      "id": "eval_026",
+      "category": "eligible",
+      "expected_route": "claim_ready",
+      "actual_route": "claim_ready",
+      "route_correct": true,
+      "expected_amount_usd": 30000.0,
+      "actual_amount_usd": 30000.0,
+      "amount_exact": true,
+      "confidence": 0.97,
+      "latency_ms": 3.81,
+      "expected_model_decision": "supported",
+      "model_assessment": {
+        "decision": "supported",
+        "confidence": 0.97,
+        "summary": "Mock assessment of the supplied evidence; no model was called.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_ticket",
+          "ev_ack",
+          "ev_telemetry"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "Mock fixture; deterministic policy checks maintenance overlap."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "mock",
+        "execution": "mock",
+        "model": null,
+        "status": "succeeded",
+        "attempts": 0,
+        "recorded_at": "2026-10-09T11:42:12.633062+00:00",
+        "prompt_sha256": "f800502a7eb752b0c25cfffb6c2bb10ee43ad698127cd72038e94e628355f05c",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "elapsed_ms": 2.21
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": true,
+          "reasons": [],
+          "at": "2026-10-09T11:42:12.636822+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_027",
+      "category": "capped",
+      "expected_route": "claim_ready",
+      "actual_route": "claim_ready",
+      "route_correct": true,
+      "expected_amount_usd": 50000.0,
+      "actual_amount_usd": 50000.0,
+      "amount_exact": true,
+      "confidence": 0.97,
+      "latency_ms": 2.98,
+      "expected_model_decision": "supported",
+      "model_assessment": {
+        "decision": "supported",
+        "confidence": 0.97,
+        "summary": "Mock assessment of the supplied evidence; no model was called.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_ticket",
+          "ev_ack",
+          "ev_telemetry"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "Mock fixture; deterministic policy checks maintenance overlap."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "mock",
+        "execution": "mock",
+        "model": null,
+        "status": "succeeded",
+        "attempts": 0,
+        "recorded_at": "2026-10-09T11:42:12.637384+00:00",
+        "prompt_sha256": "c1a6ed46952c3ea0731ccfbf82cb55e3dd64d55079cbd939eee7ba87225a9ccd",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "elapsed_ms": 1.69
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": true,
+          "reasons": [],
+          "at": "2026-10-09T11:42:12.639412+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_028",
+      "category": "full_exclusion",
+      "expected_route": "closed",
+      "actual_route": "closed",
+      "route_correct": true,
+      "expected_amount_usd": 0.0,
+      "actual_amount_usd": 0.0,
+      "amount_exact": true,
+      "confidence": 0.82,
+      "latency_ms": 3.86,
+      "expected_model_decision": "not_supported",
+      "model_assessment": {
+        "decision": "not_supported",
+        "confidence": 0.97,
+        "summary": "Mock assessment of the supplied evidence; no model was called.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_ticket",
+          "ev_ack",
+          "ev_telemetry",
+          "ev_maintenance_0"
+        ],
+        "contradictions": [
+          "Maintenance window overlaps incident from 2026-10-01T00:27:00+00:00 to 2026-10-01T02:27:00+00:00."
+        ],
+        "exclusion_analysis": [
+          "Mock fixture; deterministic policy checks maintenance overlap."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "mock",
+        "execution": "mock",
+        "model": null,
+        "status": "succeeded",
+        "attempts": 0,
+        "recorded_at": "2026-10-09T11:42:12.642296+00:00",
+        "prompt_sha256": "fba2bec0e30c970361aef831e5859031600c8bf2a9835f86b2e1dc8c3b36ed5a",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "elapsed_ms": 1.82
+      },
+      "policy": []
+    },
+    {
+      "id": "eval_029",
+      "category": "partial_overlap",
+      "expected_route": "human_review",
+      "actual_route": "human_review",
+      "route_correct": true,
+      "expected_amount_usd": 25000.0,
+      "actual_amount_usd": 25000.0,
+      "amount_exact": true,
+      "confidence": 0.82,
+      "latency_ms": 3.72,
+      "expected_model_decision": "needs_review",
+      "model_assessment": {
+        "decision": "needs_review",
+        "confidence": 0.82,
+        "summary": "Mock assessment of the supplied evidence; no model was called.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_ticket",
+          "ev_ack",
+          "ev_telemetry",
+          "ev_maintenance_0"
+        ],
+        "contradictions": [
+          "Maintenance window overlaps incident from 2026-10-01T00:58:00+00:00 to 2026-10-01T01:28:00+00:00."
+        ],
+        "exclusion_analysis": [
+          "Mock fixture; deterministic policy checks maintenance overlap."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "mock",
+        "execution": "mock",
+        "model": null,
+        "status": "succeeded",
+        "attempts": 0,
+        "recorded_at": "2026-10-09T11:42:12.645806+00:00",
+        "prompt_sha256": "08ac6db04d73daad733b4216b8fb1f2d5a3602e8aeb1076552a0859fff975b4d",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "elapsed_ms": 2.16
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": false,
+          "reasons": [
+            "Contradictory evidence requires human review.",
+            "Reasoning does not support autonomous action.",
+            "Reasoning confidence below autonomous-action threshold.",
+            "Reasoning reports unresolved contradictions."
+          ],
+          "at": "2026-10-09T11:42:12.648221+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_030",
+      "category": "wrong_vendor",
+      "expected_route": "closed",
+      "actual_route": "closed",
+      "route_correct": true,
+      "expected_amount_usd": 0.0,
+      "actual_amount_usd": 0.0,
+      "amount_exact": true,
+      "confidence": 0.97,
+      "latency_ms": 2.58,
+      "expected_model_decision": "not_supported",
+      "model_assessment": {
+        "decision": "not_supported",
+        "confidence": 0.97,
+        "summary": "Mock assessment of the supplied evidence; no model was called.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_ticket",
+          "ev_ack",
+          "ev_telemetry"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "Mock fixture; deterministic policy checks maintenance overlap."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "mock",
+        "execution": "mock",
+        "model": null,
+        "status": "succeeded",
+        "attempts": 0,
+        "recorded_at": "2026-10-09T11:42:12.648221+00:00",
+        "prompt_sha256": "5567d231d68176a6590bec9922c4db9ea336cc4bd0baaf937f45f43c1206dccb",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "elapsed_ms": 1.56
+      },
+      "policy": []
+    },
+    {
+      "id": "eval_031",
+      "category": "eligible",
+      "expected_route": "claim_ready",
+      "actual_route": "claim_ready",
+      "route_correct": true,
+      "expected_amount_usd": 20000.0,
+      "actual_amount_usd": 20000.0,
+      "amount_exact": true,
+      "confidence": 0.97,
+      "latency_ms": 2.75,
+      "expected_model_decision": "supported",
+      "model_assessment": {
+        "decision": "supported",
+        "confidence": 0.97,
+        "summary": "Mock assessment of the supplied evidence; no model was called.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_ticket",
+          "ev_ack",
+          "ev_telemetry"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "Mock fixture; deterministic policy checks maintenance overlap."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "mock",
+        "execution": "mock",
+        "model": null,
+        "status": "succeeded",
+        "attempts": 0,
+        "recorded_at": "2026-10-09T11:42:12.651830+00:00",
+        "prompt_sha256": "0670eb1e2cc5ff6dfb758c5625d76a585a7a58b5bdeea798aa1ebe79b36637b7",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "elapsed_ms": 1.42
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": true,
+          "reasons": [],
+          "at": "2026-10-09T11:42:12.654087+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_032",
+      "category": "capped",
+      "expected_route": "claim_ready",
+      "actual_route": "claim_ready",
+      "route_correct": true,
+      "expected_amount_usd": 50000.0,
+      "actual_amount_usd": 50000.0,
+      "amount_exact": true,
+      "confidence": 0.97,
+      "latency_ms": 3.72,
+      "expected_model_decision": "supported",
+      "model_assessment": {
+        "decision": "supported",
+        "confidence": 0.97,
+        "summary": "Mock assessment of the supplied evidence; no model was called.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_ticket",
+          "ev_ack",
+          "ev_telemetry"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "Mock fixture; deterministic policy checks maintenance overlap."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "mock",
+        "execution": "mock",
+        "model": null,
+        "status": "succeeded",
+        "attempts": 0,
+        "recorded_at": "2026-10-09T11:42:12.654087+00:00",
+        "prompt_sha256": "ad12cc03013c9e26ebdf9bd7d8d0baf85df88dcc442418fa8209a1f3c1493fc2",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "elapsed_ms": 1.48
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": true,
+          "reasons": [],
+          "at": "2026-10-09T11:42:12.657637+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_033",
+      "category": "full_exclusion",
+      "expected_route": "closed",
+      "actual_route": "closed",
+      "route_correct": true,
+      "expected_amount_usd": 0.0,
+      "actual_amount_usd": 0.0,
+      "amount_exact": true,
+      "confidence": 0.82,
+      "latency_ms": 3.54,
+      "expected_model_decision": "not_supported",
+      "model_assessment": {
+        "decision": "not_supported",
+        "confidence": 0.97,
+        "summary": "Mock assessment of the supplied evidence; no model was called.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_ticket",
+          "ev_ack",
+          "ev_telemetry",
+          "ev_maintenance_0"
+        ],
+        "contradictions": [
+          "Maintenance window overlaps incident from 2026-10-01T00:32:00+00:00 to 2026-10-01T02:32:00+00:00."
+        ],
+        "exclusion_analysis": [
+          "Mock fixture; deterministic policy checks maintenance overlap."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "mock",
+        "execution": "mock",
+        "model": null,
+        "status": "succeeded",
+        "attempts": 0,
+        "recorded_at": "2026-10-09T11:42:12.658154+00:00",
+        "prompt_sha256": "7645132734c5776fb98b3065dd316c770a8c57fc3abafd5567e0fc3b0122a65d",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "elapsed_ms": 1.86
+      },
+      "policy": []
+    },
+    {
+      "id": "eval_034",
+      "category": "partial_overlap",
+      "expected_route": "human_review",
+      "actual_route": "human_review",
+      "route_correct": true,
+      "expected_amount_usd": 25000.0,
+      "actual_amount_usd": 25000.0,
+      "amount_exact": true,
+      "confidence": 0.82,
+      "latency_ms": 3.64,
+      "expected_model_decision": "needs_review",
+      "model_assessment": {
+        "decision": "needs_review",
+        "confidence": 0.82,
+        "summary": "Mock assessment of the supplied evidence; no model was called.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_ticket",
+          "ev_ack",
+          "ev_telemetry",
+          "ev_maintenance_0"
+        ],
+        "contradictions": [
+          "Maintenance window overlaps incident from 2026-10-01T01:03:00+00:00 to 2026-10-01T01:33:00+00:00."
+        ],
+        "exclusion_analysis": [
+          "Mock fixture; deterministic policy checks maintenance overlap."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "mock",
+        "execution": "mock",
+        "model": null,
+        "status": "succeeded",
+        "attempts": 0,
+        "recorded_at": "2026-10-09T11:42:12.661732+00:00",
+        "prompt_sha256": "0409651a2b6ace83b2cd70da1dfdf89d9e2d909f1332f8be33e3732c5c461c50",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "elapsed_ms": 1.72
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": false,
+          "reasons": [
+            "Contradictory evidence requires human review.",
+            "Reasoning does not support autonomous action.",
+            "Reasoning confidence below autonomous-action threshold.",
+            "Reasoning reports unresolved contradictions."
+          ],
+          "at": "2026-10-09T11:42:12.664809+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_035",
+      "category": "wrong_vendor",
+      "expected_route": "closed",
+      "actual_route": "closed",
+      "route_correct": true,
+      "expected_amount_usd": 0.0,
+      "actual_amount_usd": 0.0,
+      "amount_exact": true,
+      "confidence": 0.97,
+      "latency_ms": 3.81,
+      "expected_model_decision": "not_supported",
+      "model_assessment": {
+        "decision": "not_supported",
+        "confidence": 0.97,
+        "summary": "Mock assessment of the supplied evidence; no model was called.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_ticket",
+          "ev_ack",
+          "ev_telemetry"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "Mock fixture; deterministic policy checks maintenance overlap."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "mock",
+        "execution": "mock",
+        "model": null,
+        "status": "succeeded",
+        "attempts": 0,
+        "recorded_at": "2026-10-09T11:42:12.665942+00:00",
+        "prompt_sha256": "b78f68cead2a290bda044286c868ceb3d3f523e193f8b90b2938bf39e99e2f64",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "elapsed_ms": 2.13
+      },
+      "policy": []
+    },
+    {
+      "id": "eval_036",
+      "category": "eligible",
+      "expected_route": "claim_ready",
+      "actual_route": "claim_ready",
+      "route_correct": true,
+      "expected_amount_usd": 40000.0,
+      "actual_amount_usd": 40000.0,
+      "amount_exact": true,
+      "confidence": 0.97,
+      "latency_ms": 2.93,
+      "expected_model_decision": "supported",
+      "model_assessment": {
+        "decision": "supported",
+        "confidence": 0.97,
+        "summary": "Mock assessment of the supplied evidence; no model was called.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_ticket",
+          "ev_ack",
+          "ev_telemetry"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "Mock fixture; deterministic policy checks maintenance overlap."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "mock",
+        "execution": "mock",
+        "model": null,
+        "status": "succeeded",
+        "attempts": 0,
+        "recorded_at": "2026-10-09T11:42:12.669509+00:00",
+        "prompt_sha256": "bb665ec4be8b9e353f13c267a290475e40ceb1c91600d0b6c5b14f324452ef83",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "elapsed_ms": 1.57
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": true,
+          "reasons": [],
+          "at": "2026-10-09T11:42:12.671601+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_037",
+      "category": "capped",
+      "expected_route": "claim_ready",
+      "actual_route": "claim_ready",
+      "route_correct": true,
+      "expected_amount_usd": 50000.0,
+      "actual_amount_usd": 50000.0,
+      "amount_exact": true,
+      "confidence": 0.97,
+      "latency_ms": 3.38,
+      "expected_model_decision": "supported",
+      "model_assessment": {
+        "decision": "supported",
+        "confidence": 0.97,
+        "summary": "Mock assessment of the supplied evidence; no model was called.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_ticket",
+          "ev_ack",
+          "ev_telemetry"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "Mock fixture; deterministic policy checks maintenance overlap."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "mock",
+        "execution": "mock",
+        "model": null,
+        "status": "succeeded",
+        "attempts": 0,
+        "recorded_at": "2026-10-09T11:42:12.671601+00:00",
+        "prompt_sha256": "1ac1541a35041e895c303b13b4ee90d8e9f953d91671a6e5293803b334a79d0a",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "elapsed_ms": 1.41
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": true,
+          "reasons": [],
+          "at": "2026-10-09T11:42:12.674584+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_038",
+      "category": "full_exclusion",
+      "expected_route": "closed",
+      "actual_route": "closed",
+      "route_correct": true,
+      "expected_amount_usd": 0.0,
+      "actual_amount_usd": 0.0,
+      "amount_exact": true,
+      "confidence": 0.82,
+      "latency_ms": 3.43,
+      "expected_model_decision": "not_supported",
+      "model_assessment": {
+        "decision": "not_supported",
+        "confidence": 0.97,
+        "summary": "Mock assessment of the supplied evidence; no model was called.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_ticket",
+          "ev_ack",
+          "ev_telemetry",
+          "ev_maintenance_0"
+        ],
+        "contradictions": [
+          "Maintenance window overlaps incident from 2026-10-01T00:37:00+00:00 to 2026-10-01T02:37:00+00:00."
+        ],
+        "exclusion_analysis": [
+          "Mock fixture; deterministic policy checks maintenance overlap."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "mock",
+        "execution": "mock",
+        "model": null,
+        "status": "succeeded",
+        "attempts": 0,
+        "recorded_at": "2026-10-09T11:42:12.676642+00:00",
+        "prompt_sha256": "82c66cdfc74e86d0848fe164bebfb5e56e6ff1e56bdbfc411d2a2fc4ab4a794f",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "elapsed_ms": 1.65
+      },
+      "policy": []
+    },
+    {
+      "id": "eval_039",
+      "category": "partial_overlap",
+      "expected_route": "human_review",
+      "actual_route": "human_review",
+      "route_correct": true,
+      "expected_amount_usd": 25000.0,
+      "actual_amount_usd": 25000.0,
+      "amount_exact": true,
+      "confidence": 0.82,
+      "latency_ms": 4.27,
+      "expected_model_decision": "needs_review",
+      "model_assessment": {
+        "decision": "needs_review",
+        "confidence": 0.82,
+        "summary": "Mock assessment of the supplied evidence; no model was called.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_ticket",
+          "ev_ack",
+          "ev_telemetry",
+          "ev_maintenance_0"
+        ],
+        "contradictions": [
+          "Maintenance window overlaps incident from 2026-10-01T01:08:00+00:00 to 2026-10-01T01:38:00+00:00."
+        ],
+        "exclusion_analysis": [
+          "Mock fixture; deterministic policy checks maintenance overlap."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "mock",
+        "execution": "mock",
+        "model": null,
+        "status": "succeeded",
+        "attempts": 0,
+        "recorded_at": "2026-10-09T11:42:12.679398+00:00",
+        "prompt_sha256": "417d8d6f819e1b7806fd83d3fb85ae8cbe4dfab961e7429e346f8ea8302c63d9",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "elapsed_ms": 1.48
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": false,
+          "reasons": [
+            "Contradictory evidence requires human review.",
+            "Reasoning does not support autonomous action.",
+            "Reasoning confidence below autonomous-action threshold.",
+            "Reasoning reports unresolved contradictions."
+          ],
+          "at": "2026-10-09T11:42:12.682985+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_040",
+      "category": "wrong_vendor",
+      "expected_route": "closed",
+      "actual_route": "closed",
+      "route_correct": true,
+      "expected_amount_usd": 0.0,
+      "actual_amount_usd": 0.0,
+      "amount_exact": true,
+      "confidence": 0.97,
+      "latency_ms": 3.1,
+      "expected_model_decision": "not_supported",
+      "model_assessment": {
+        "decision": "not_supported",
+        "confidence": 0.97,
+        "summary": "Mock assessment of the supplied evidence; no model was called.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_ticket",
+          "ev_ack",
+          "ev_telemetry"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "Mock fixture; deterministic policy checks maintenance overlap."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "mock",
+        "execution": "mock",
+        "model": null,
+        "status": "succeeded",
+        "attempts": 0,
+        "recorded_at": "2026-10-09T11:42:12.682985+00:00",
+        "prompt_sha256": "9182ec0b90cb99ff527e7b6b820fdbd44e7f363229e9e53f828e0be6d16cf1b5",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "elapsed_ms": 1.84
+      },
+      "policy": []
+    },
+    {
+      "id": "eval_041",
+      "category": "eligible",
+      "expected_route": "claim_ready",
+      "actual_route": "claim_ready",
+      "route_correct": true,
+      "expected_amount_usd": 30000.0,
+      "actual_amount_usd": 30000.0,
+      "amount_exact": true,
+      "confidence": 0.97,
+      "latency_ms": 3.34,
+      "expected_model_decision": "supported",
+      "model_assessment": {
+        "decision": "supported",
+        "confidence": 0.97,
+        "summary": "Mock assessment of the supplied evidence; no model was called.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_ticket",
+          "ev_ack",
+          "ev_telemetry"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "Mock fixture; deterministic policy checks maintenance overlap."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "mock",
+        "execution": "mock",
+        "model": null,
+        "status": "succeeded",
+        "attempts": 0,
+        "recorded_at": "2026-10-09T11:42:12.686893+00:00",
+        "prompt_sha256": "c6b0169efe917351ca652b5f0fd93d7762bef464e0860ba82b396c745aa116b9",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "elapsed_ms": 1.81
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": true,
+          "reasons": [],
+          "at": "2026-10-09T11:42:12.689103+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_042",
+      "category": "capped",
+      "expected_route": "claim_ready",
+      "actual_route": "claim_ready",
+      "route_correct": true,
+      "expected_amount_usd": 50000.0,
+      "actual_amount_usd": 50000.0,
+      "amount_exact": true,
+      "confidence": 0.97,
+      "latency_ms": 3.27,
+      "expected_model_decision": "supported",
+      "model_assessment": {
+        "decision": "supported",
+        "confidence": 0.97,
+        "summary": "Mock assessment of the supplied evidence; no model was called.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_ticket",
+          "ev_ack",
+          "ev_telemetry"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "Mock fixture; deterministic policy checks maintenance overlap."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "mock",
+        "execution": "mock",
+        "model": null,
+        "status": "succeeded",
+        "attempts": 0,
+        "recorded_at": "2026-10-09T11:42:12.689750+00:00",
+        "prompt_sha256": "5ed8746882d70f1c799a1108617f780ecb7dc9ba7bdb1a6789833202882002e5",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "elapsed_ms": 1.87
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": true,
+          "reasons": [],
+          "at": "2026-10-09T11:42:12.692920+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_043",
+      "category": "full_exclusion",
+      "expected_route": "closed",
+      "actual_route": "closed",
+      "route_correct": true,
+      "expected_amount_usd": 0.0,
+      "actual_amount_usd": 0.0,
+      "amount_exact": true,
+      "confidence": 0.82,
+      "latency_ms": 4.65,
+      "expected_model_decision": "not_supported",
+      "model_assessment": {
+        "decision": "not_supported",
+        "confidence": 0.97,
+        "summary": "Mock assessment of the supplied evidence; no model was called.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_ticket",
+          "ev_ack",
+          "ev_telemetry",
+          "ev_maintenance_0"
+        ],
+        "contradictions": [
+          "Maintenance window overlaps incident from 2026-10-01T00:42:00+00:00 to 2026-10-01T02:42:00+00:00."
+        ],
+        "exclusion_analysis": [
+          "Mock fixture; deterministic policy checks maintenance overlap."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "mock",
+        "execution": "mock",
+        "model": null,
+        "status": "succeeded",
+        "attempts": 0,
+        "recorded_at": "2026-10-09T11:42:12.692920+00:00",
+        "prompt_sha256": "431617cb3e5bc4a27341fdade98214924183858245e7e3292d87ff7cd3bbb0eb",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "elapsed_ms": 3.41
+      },
+      "policy": []
+    },
+    {
+      "id": "eval_044",
+      "category": "partial_overlap",
+      "expected_route": "human_review",
+      "actual_route": "human_review",
+      "route_correct": true,
+      "expected_amount_usd": 25000.0,
+      "actual_amount_usd": 25000.0,
+      "amount_exact": true,
+      "confidence": 0.82,
+      "latency_ms": 4.09,
+      "expected_model_decision": "needs_review",
+      "model_assessment": {
+        "decision": "needs_review",
+        "confidence": 0.82,
+        "summary": "Mock assessment of the supplied evidence; no model was called.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_ticket",
+          "ev_ack",
+          "ev_telemetry",
+          "ev_maintenance_0"
+        ],
+        "contradictions": [
+          "Maintenance window overlaps incident from 2026-10-01T01:13:00+00:00 to 2026-10-01T01:43:00+00:00."
+        ],
+        "exclusion_analysis": [
+          "Mock fixture; deterministic policy checks maintenance overlap."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "mock",
+        "execution": "mock",
+        "model": null,
+        "status": "succeeded",
+        "attempts": 0,
+        "recorded_at": "2026-10-09T11:42:12.699140+00:00",
+        "prompt_sha256": "074e1b6de50cfcc76d77ae55c8b9ac271d7e519d087e878cf3ee066508c18e8b",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "elapsed_ms": 1.81
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": false,
+          "reasons": [
+            "Contradictory evidence requires human review.",
+            "Reasoning does not support autonomous action.",
+            "Reasoning confidence below autonomous-action threshold.",
+            "Reasoning reports unresolved contradictions."
+          ],
+          "at": "2026-10-09T11:42:12.700785+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_045",
+      "category": "wrong_vendor",
+      "expected_route": "closed",
+      "actual_route": "closed",
+      "route_correct": true,
+      "expected_amount_usd": 0.0,
+      "actual_amount_usd": 0.0,
+      "amount_exact": true,
+      "confidence": 0.97,
+      "latency_ms": 2.45,
+      "expected_model_decision": "not_supported",
+      "model_assessment": {
+        "decision": "not_supported",
+        "confidence": 0.97,
+        "summary": "Mock assessment of the supplied evidence; no model was called.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_ticket",
+          "ev_ack",
+          "ev_telemetry"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "Mock fixture; deterministic policy checks maintenance overlap."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "mock",
+        "execution": "mock",
+        "model": null,
+        "status": "succeeded",
+        "attempts": 0,
+        "recorded_at": "2026-10-09T11:42:12.700785+00:00",
+        "prompt_sha256": "92a51e348852bb1690eb820bf5191e3efa73eef0196e68c2ac44dfd5bb0080d7",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "elapsed_ms": 1.41
+      },
+      "policy": []
+    },
+    {
+      "id": "eval_046",
+      "category": "eligible",
+      "expected_route": "claim_ready",
+      "actual_route": "claim_ready",
+      "route_correct": true,
+      "expected_amount_usd": 20000.0,
+      "actual_amount_usd": 20000.0,
+      "amount_exact": true,
+      "confidence": 0.97,
+      "latency_ms": 3.09,
+      "expected_model_decision": "supported",
+      "model_assessment": {
+        "decision": "supported",
+        "confidence": 0.97,
+        "summary": "Mock assessment of the supplied evidence; no model was called.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_ticket",
+          "ev_ack",
+          "ev_telemetry"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "Mock fixture; deterministic policy checks maintenance overlap."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "mock",
+        "execution": "mock",
+        "model": null,
+        "status": "succeeded",
+        "attempts": 0,
+        "recorded_at": "2026-10-09T11:42:12.705185+00:00",
+        "prompt_sha256": "d6f41b1c3d1b05f2580a20dc9fa1b073968746ea7739fec8716cc6c528efe778",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "elapsed_ms": 1.68
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": true,
+          "reasons": [],
+          "at": "2026-10-09T11:42:12.707215+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_047",
+      "category": "capped",
+      "expected_route": "claim_ready",
+      "actual_route": "claim_ready",
+      "route_correct": true,
+      "expected_amount_usd": 50000.0,
+      "actual_amount_usd": 50000.0,
+      "amount_exact": true,
+      "confidence": 0.97,
+      "latency_ms": 3.04,
+      "expected_model_decision": "supported",
+      "model_assessment": {
+        "decision": "supported",
+        "confidence": 0.97,
+        "summary": "Mock assessment of the supplied evidence; no model was called.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_ticket",
+          "ev_ack",
+          "ev_telemetry"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "Mock fixture; deterministic policy checks maintenance overlap."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "mock",
+        "execution": "mock",
+        "model": null,
+        "status": "succeeded",
+        "attempts": 0,
+        "recorded_at": "2026-10-09T11:42:12.708034+00:00",
+        "prompt_sha256": "ea97c5ac56e941e22d8dd5240ee2bad9544111ba5658696a584193589a7e2efe",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "elapsed_ms": 1.64
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": true,
+          "reasons": [],
+          "at": "2026-10-09T11:42:12.709934+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_048",
+      "category": "full_exclusion",
+      "expected_route": "closed",
+      "actual_route": "closed",
+      "route_correct": true,
+      "expected_amount_usd": 0.0,
+      "actual_amount_usd": 0.0,
+      "amount_exact": true,
+      "confidence": 0.82,
+      "latency_ms": 3.27,
+      "expected_model_decision": "not_supported",
+      "model_assessment": {
+        "decision": "not_supported",
+        "confidence": 0.97,
+        "summary": "Mock assessment of the supplied evidence; no model was called.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_ticket",
+          "ev_ack",
+          "ev_telemetry",
+          "ev_maintenance_0"
+        ],
+        "contradictions": [
+          "Maintenance window overlaps incident from 2026-10-01T00:47:00+00:00 to 2026-10-01T02:47:00+00:00."
+        ],
+        "exclusion_analysis": [
+          "Mock fixture; deterministic policy checks maintenance overlap."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "mock",
+        "execution": "mock",
+        "model": null,
+        "status": "succeeded",
+        "attempts": 0,
+        "recorded_at": "2026-10-09T11:42:12.711586+00:00",
+        "prompt_sha256": "2f4f127fbb21ff9993e6a254cf554016bba9ec963155e88e1425d270d04d241b",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "elapsed_ms": 1.74
+      },
+      "policy": []
+    },
+    {
+      "id": "eval_049",
+      "category": "partial_overlap",
+      "expected_route": "human_review",
+      "actual_route": "human_review",
+      "route_correct": true,
+      "expected_amount_usd": 25000.0,
+      "actual_amount_usd": 25000.0,
+      "amount_exact": true,
+      "confidence": 0.82,
+      "latency_ms": 3.06,
+      "expected_model_decision": "needs_review",
+      "model_assessment": {
+        "decision": "needs_review",
+        "confidence": 0.82,
+        "summary": "Mock assessment of the supplied evidence; no model was called.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_ticket",
+          "ev_ack",
+          "ev_telemetry",
+          "ev_maintenance_0"
+        ],
+        "contradictions": [
+          "Maintenance window overlaps incident from 2026-10-01T01:18:00+00:00 to 2026-10-01T01:48:00+00:00."
+        ],
+        "exclusion_analysis": [
+          "Mock fixture; deterministic policy checks maintenance overlap."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "mock",
+        "execution": "mock",
+        "model": null,
+        "status": "succeeded",
+        "attempts": 0,
+        "recorded_at": "2026-10-09T11:42:12.714748+00:00",
+        "prompt_sha256": "5bd5dbb924d11a1f7ae2823a34f838529de1dba841367261485065162ccc14bb",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "elapsed_ms": 1.6
+      },
+      "policy": [
+        {
+          "action": "investigate",
+          "allowed": false,
+          "reasons": [
+            "Contradictory evidence requires human review.",
+            "Reasoning does not support autonomous action.",
+            "Reasoning confidence below autonomous-action threshold.",
+            "Reasoning reports unresolved contradictions."
+          ],
+          "at": "2026-10-09T11:42:12.716786+00:00",
+          "business_time": "2026-10-07T12:00:00+00:00",
+          "min_confidence": 0.9,
+          "max_amount_usd": 50000.0
+        }
+      ]
+    },
+    {
+      "id": "eval_050",
+      "category": "wrong_vendor",
+      "expected_route": "closed",
+      "actual_route": "closed",
+      "route_correct": true,
+      "expected_amount_usd": 0.0,
+      "actual_amount_usd": 0.0,
+      "amount_exact": true,
+      "confidence": 0.97,
+      "latency_ms": 2.63,
+      "expected_model_decision": "not_supported",
+      "model_assessment": {
+        "decision": "not_supported",
+        "confidence": 0.97,
+        "summary": "Mock assessment of the supplied evidence; no model was called.",
+        "citations": [
+          "sla.cooling.7.4",
+          "ev_contract",
+          "ev_ticket",
+          "ev_ack",
+          "ev_telemetry"
+        ],
+        "contradictions": [],
+        "exclusion_analysis": [
+          "Mock fixture; deterministic policy checks maintenance overlap."
+        ]
+      },
+      "assisted_model_decision_correct": true,
+      "inference": {
+        "requested_mode": "mock",
+        "execution": "mock",
+        "model": null,
+        "status": "succeeded",
+        "attempts": 0,
+        "recorded_at": "2026-10-09T11:42:12.717297+00:00",
+        "prompt_sha256": "9469b881d4353aa021a9906abd267dee4f967fb7d460a357ea62919884a25e60",
+        "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+        "elapsed_ms": 1.46
+      },
+      "policy": []
+    }
+  ],
+  "notes": [
+    "Money, caps, time windows, and maintenance overlap are evaluated by deterministic Python.",
+    "Mock mode validates orchestration and safety logic; live mode is required before publishing model-quality claims.",
+    "No benchmark number should be presented externally without recording the mode and suite version.",
+    "Route accuracy is the final guarded system outcome, not standalone model accuracy.",
+    "Assisted model decisions receive deterministic entitlement/context; labels are independently specified.",
+    "Unsafe autonomous action rate measures unsafe claim-ready routing, not external vendor actions.",
+    "Provider failures remain in denominators; mock and HTTP test transports never qualify as live evidence."
+  ],
+  "preflight": null,
+  "source_sha256": "238a37371a2d3ed2539a37fc371467536010a9c381ce1989ae224d627d87dc77",
+  "python_version": "3.11.9"
+}

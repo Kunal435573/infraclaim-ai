@@ -1,0 +1,49 @@
+services:
+  backend:
+    build: ./backend
+    env_file:
+      - path: ./backend/.env
+        required: false
+    environment:
+      INFRACLAIM_LLM_MODE: ${INFRACLAIM_LLM_MODE:-mock}
+      DATABASE_PATH: ${DEPLOY_DATABASE_PATH:-/data/infraclaim.sqlite3}
+      EVALUATION_API_ENABLED: "false"
+      AUTH_ENABLED: "true"
+      MANUAL_SOURCE_GATE: "true"
+      AUTH_COOKIE_SECURE: ${AUTH_COOKIE_SECURE:-false}
+      INFRACLAIM_DEPLOYMENT: ${INFRACLAIM_DEPLOYMENT:-local}
+      SELF_SIGNUP_ENABLED: "false"
+      WATCHER_ENABLED: "true"
+    volumes:
+      - claims:/data
+    restart: unless-stopped
+    security_opt: ["no-new-privileges:true"]
+  frontend:
+    build: ./frontend
+    environment:
+      INFRACLAIM_API_INTERNAL_URL: http://backend:8000
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
+    security_opt: ["no-new-privileges:true"]
+  gateway:
+    image: caddy:2-alpine
+    environment:
+      SITE_ADDRESS: ${SITE_ADDRESS:-:80}
+      DEMO_USERNAME: ${DEMO_USERNAME:?Set a demo username}
+      DEMO_PASSWORD_HASH: ${DEMO_PASSWORD_HASH:?Set a bcrypt password hash}
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    ports:
+      - "${BIND_ADDRESS:-127.0.0.1}:${HTTP_PORT:-8086}:80"
+      - "${BIND_ADDRESS:-127.0.0.1}:${HTTPS_PORT:-8446}:443"
+    depends_on: [frontend]
+    restart: unless-stopped
+    security_opt: ["no-new-privileges:true"]
+volumes:
+  claims:
+  caddy_data:
+  caddy_config:

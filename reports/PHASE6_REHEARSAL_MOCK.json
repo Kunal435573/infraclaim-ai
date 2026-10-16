@@ -1,0 +1,50 @@
+{
+  "mode": "mock",
+  "vendor_mode": "simulated",
+  "real_money_recovered": false,
+  "started_at": "2026-10-09T11:40:44.627594+00:00",
+  "steps": [
+    "Three-page PDF ingested; Section 7.4 on page 2",
+    "submitted",
+    "disputed",
+    "defended",
+    "accepted",
+    "Restarted API; matched posted $40,000 simulated memo; duplicate reconciliation booked once",
+    "Ambiguous incident held for review; submission blocked"
+  ],
+  "status": "passed",
+  "investigation_inference": {
+    "requested_mode": "mock",
+    "execution": "mock",
+    "model": null,
+    "status": "succeeded",
+    "attempts": 0,
+    "recorded_at": "2026-10-09T11:40:44.955005+00:00",
+    "prompt_sha256": "687489361a6bc96985498272d3b8253fa7f7fee871cbf4ef2fdc84c6e3554a17",
+    "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+    "elapsed_ms": 3.12
+  },
+  "counter_inference": {
+    "requested_mode": "mock",
+    "execution": "mock",
+    "model": null,
+    "status": "succeeded",
+    "attempts": 0,
+    "recorded_at": "2026-10-09T11:40:45.092970+00:00",
+    "prompt_sha256": "f0151916d97403aac85508230ece3fd153d2b01d5ccd38d1cc0d5fb9d114e09a",
+    "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+    "elapsed_ms": 2.21
+  },
+  "ambiguous_inference": {
+    "requested_mode": "mock",
+    "execution": "mock",
+    "model": null,
+    "status": "succeeded",
+    "attempts": 0,
+    "recorded_at": "2026-10-09T11:40:45.370375+00:00",
+    "prompt_sha256": "9fc0794b6e2d61d4e9624d314c602780f3932060ee74ee0ffd81a839933e0c2d",
+    "schema_sha256": "8a25806b06db1db832ddfe8bca39ae475760e122b91c9fc2816ecbb36c5ceea6",
+    "elapsed_ms": 1.51
+  },
+  "simulated_verified_amount_usd": 40000
+}

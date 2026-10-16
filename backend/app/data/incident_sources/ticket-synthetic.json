@@ -1,0 +1,7 @@
+{
+  "synthetic_fixture": true,
+  "incident_id": "pilot_manual_001",
+  "ticket_opened_at": "2026-10-05T14:05:00Z",
+  "vendor_acknowledged_at": "2026-10-05T14:29:00Z",
+  "system": "synthetic service desk export"
+}
